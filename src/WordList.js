@@ -47,40 +47,36 @@ export default class WordList extends React.Component {
     }
 
     render(){
-        if(this.state.show){
-            return (
-                <div className="board">
-                    <div>
-                        <span onClick={()=>this.next()}>Next Page</span>
-                        <span onClick={()=>this.switch()}>Hide</span>
-                    </div>
-                    <div className ="word-card">
-                       <div className="vocab">
-                            <span>{this.state.vocab.vocab}</span>
-                        </div>
-                        <div className="translation">
-                            <span>{this.state.vocab.part_of_speech}</span>
-                            <span>{this.state.vocab.translation1}</span>;
-                            <span>{this.state.vocab.translation2}</span>;
-                            <span>{this.state.vocab.translation3}</span>
-                        </div> 
-                    </div>
+        return (
+            <div className="board">
+                <div>
+                    <span onClick={()=>this.next()}>Next Page</span>
+                    <span onClick={()=>this.switch()}>{this.state.show? 'hide' : 'show'}</span>
                 </div>
-            )  
-        } else {
-            return (
-                <div className="board">
-                    <div>
-                        <span onClick={()=>this.next()}>Next Page</span>
-                        <span onClick={()=>this.switch()}>Show</span>
+                <div className ="word-card">
+                    <div className="vocab">
+                        <span>{this.state.vocab.vocab}</span>
                     </div>
-                    <div className ="word-card">
-                       <div className="vocab">
-                            <span>{this.state.vocab.vocab}</span>
-                        </div>
-                    </div>
+                    <Translation vocab={this.state.vocab} show={this.state.show} />
                 </div>
+            </div>
+        )  
+    }
+}
+
+class Translation extends React.Component{
+    render(){
+        if(this.props.show){
+            return(
+            <div className="translation">
+                <span>{this.props.vocab.part_of_speech}</span>
+                <span>{this.props.vocab.translation1}</span>;
+                <span>{this.props.vocab.translation2}</span>;
+                <span>{this.props.vocab.translation3}</span>
+            </div> 
             )
+        }else{
+            return(<div/>)
         }
         
     }
