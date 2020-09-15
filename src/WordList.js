@@ -1,21 +1,23 @@
 import React from 'react';
-
-import axios from 'axios';
-
 import './WordList.css';
 export default class WordList extends React.Component {
     
     state = {
         vocab : [],
-        count : 0
+        count : 0,
+        show : false
     }
 
     componentDidMount(){
         this.fetchNextWord()
     }
 
-    handleClick(){
+    next(){
         this.fetchNextWord()
+    }
+    
+    switch(){
+        this.setState({show:!this.state.show});
     }
 
     fetchNextWord(){
@@ -32,7 +34,7 @@ export default class WordList extends React.Component {
             redirect: 'follow'
         }
 
-        fetch("http://localhost/word-app/php/vocab.php", options)
+        fetch("http://ubuntugui-imac/word-app/php/vocab.php", options)
             .then(response => response.json())
             .then(result => {
                 const vocab = result[0];
@@ -41,26 +43,45 @@ export default class WordList extends React.Component {
             .catch(error => console.log('error', error));
 
             this.setState({count: this.state.count+1});
+            this.setState({show: false});
     }
 
     render(){
-        return (
-            <div className="board">
-                <div>
-                    <span onClick={()=>this.handleClick()}>Next Page</span>
-                </div>
-                <div className ="word-card">
-                   <div className="vocab">
-                        <span>{this.state.vocab.vocab}</span>
+        if(this.state.show){
+            return (
+                <div className="board">
+                    <div>
+                        <span onClick={()=>this.next()}>Next Page</span>
+                        <span onClick={()=>this.switch()}>Hide</span>
                     </div>
-                    <div className="translation">
-                        <span>{this.state.vocab.part_of_speech}</span>
-                        <span>{this.state.vocab.translation1}</span>;
-                        <span>{this.state.vocab.translation2}</span>;
-                        <span>{this.state.vocab.translation3}</span>
-                    </div> 
+                    <div className ="word-card">
+                       <div className="vocab">
+                            <span>{this.state.vocab.vocab}</span>
+                        </div>
+                        <div className="translation">
+                            <span>{this.state.vocab.part_of_speech}</span>
+                            <span>{this.state.vocab.translation1}</span>;
+                            <span>{this.state.vocab.translation2}</span>;
+                            <span>{this.state.vocab.translation3}</span>
+                        </div> 
+                    </div>
                 </div>
-            </div>
-        )
+            )  
+        } else {
+            return (
+                <div className="board">
+                    <div>
+                        <span onClick={()=>this.next()}>Next Page</span>
+                        <span onClick={()=>this.switch()}>Show</span>
+                    </div>
+                    <div className ="word-card">
+                       <div className="vocab">
+                            <span>{this.state.vocab.vocab}</span>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+        
     }
 }
