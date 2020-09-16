@@ -35,13 +35,13 @@ img {
 .last-page-button{
     position: absolute;
     top:0;
-    left:10%;
+    left:25%;
 }
 
 .next-page-button{
     position: absolute;
     top:0;
-    right:10%;
+    right:25%;
 }
 
 .show-hide-button{
@@ -49,4 +49,10 @@ img {
     top:0;
     left:50%;
     transform: translate(-50%,0);
+}
+
+.vocab-link{
+    position: absolute;
+    top:0;
+    right:0;
 }

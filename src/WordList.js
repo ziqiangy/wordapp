@@ -4,6 +4,7 @@ import leftArrow from './icons/arrow-circle-left-solid.svg';
 import rightArrow from './icons/arrow-circle-right-solid.svg';
 import openedEye from './icons/eye-regular.svg';
 import closedEye from './icons/eye-slash-regular.svg';
+import externalLink from './icons/external-link-alt-solid.svg';
 export default class WordList extends React.Component {
     constructor(props){
         super(props)
@@ -76,6 +77,7 @@ export default class WordList extends React.Component {
                     <div className="last-page-button" onClick={()=>this.last()}><img src={leftArrow} /></div>
                     <div className="show-hide-button" onClick={()=>this.switch()}>{this.state.show? <img src={closedEye} /> : <img src={openedEye} />}</div>
                     <div className="next-page-button" onClick={()=>this.next()}><img src={rightArrow} /></div>
+                    <div className="vocab-link"><a href={"https://www.vocabulary.com/dictionary/"+this.state.vocab.vocab} target="_blank"><img src={externalLink} /></a></div>
                 </div>
                 <div className ="word-card">
                     <div className="vocab">
