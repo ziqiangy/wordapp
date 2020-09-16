@@ -22,3 +22,26 @@
 .translation{
     font-size: 20px;
 }
+
+.word-header{
+    position:relative
+}
+
+.last-page-button{
+    position: absolute;
+    top:0;
+    left:10%;
+}
+
+.next-page-button{
+    position: absolute;
+    top:0;
+    right:10%;
+}
+
+.show-hide-button{
+    position:absolute;
+    top:0;
+    left:50%;
+    transform: translate(-50%,0);
+}
