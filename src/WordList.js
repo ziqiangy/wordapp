@@ -1,5 +1,9 @@
 import React from 'react';
 import './WordList.css';
+import leftArrow from './icons/arrow-circle-left-solid.svg';
+import rightArrow from './icons/arrow-circle-right-solid.svg';
+import openedEye from './icons/eye-regular.svg';
+import closedEye from './icons/eye-slash-regular.svg';
 export default class WordList extends React.Component {
     constructor(props){
         super(props)
@@ -67,10 +71,11 @@ export default class WordList extends React.Component {
     render(){
         return (
             <div className="board">
+                
                 <div className="word-header">
-                    <div className="last-page-button" onClick={()=>this.last()}>Last Page</div>
-                    <div className="show-hide-button" onClick={()=>this.switch()}>{this.state.show? 'hide' : 'show'}</div>
-                    <div className="next-page-button" onClick={()=>this.next()}>Next Page</div>
+                    <div className="last-page-button" onClick={()=>this.last()}><img src={leftArrow} /></div>
+                    <div className="show-hide-button" onClick={()=>this.switch()}>{this.state.show? <img src={closedEye} /> : <img src={openedEye} />}</div>
+                    <div className="next-page-button" onClick={()=>this.next()}><img src={rightArrow} /></div>
                 </div>
                 <div className ="word-card">
                     <div className="vocab">

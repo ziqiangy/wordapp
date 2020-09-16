@@ -1,3 +1,8 @@
+img {
+    height: 25px;
+    object-fit: cover;
+  }
+
 .board{
     border-radius: 15px;
     background-color: lightyellow;
