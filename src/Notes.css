@@ -9,11 +9,13 @@
 }
 
 .notes-card{
+    padding:10px;
+    width:100%;
     position: absolute;
-    top: 50%;
-    left:50%;
-    margin-right: -50%;
-    transform: translate(-50%,-50%);
+    top: 10%;
+    left:0%;
+    /* margin-right: -50%; */
+    /* transform: translate(-50%,-50%); */
 }
 
 .notes-header{
