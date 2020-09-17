@@ -1,0 +1,21 @@
+.notes-board{
+    border-radius: 15px;
+    background-color: lightyellow;
+    margin: 10px auto;
+    width: 400px;
+    height: 600px;
+    box-shadow: 2px 2px 5px rgb(0, 0, 0);
+    position: relative;
+}
+
+.notes-card{
+    position: absolute;
+    top: 50%;
+    left:50%;
+    margin-right: -50%;
+    transform: translate(-50%,-50%);
+}
+
+.notes-header{
+    position:relative
+}

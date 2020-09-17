@@ -2,12 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 // import App from './App';
-import WordList from './WordList'
+import WordList from './WordList';
+import Notes from './Notes';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
     <WordList />
+    <Notes />
   </React.StrictMode>,
   document.getElementById('root')
 );
