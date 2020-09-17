@@ -71,7 +71,7 @@ export default class WordList extends React.Component {
 
     render(){
         return (
-            <div className="board">
+            <div className="word-board">
                 
                 <div className="word-header">
                     <div className="last-page-button" onClick={()=>this.last()}><img src={leftArrow} /></div>

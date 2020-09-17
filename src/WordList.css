@@ -3,12 +3,12 @@ img {
     object-fit: cover;
   }
 
-.board{
+.word-board{
     border-radius: 15px;
     background-color: lightyellow;
-    margin: 25vh auto;
-    width: 50%;
-    height: 50vh;
+    margin: 10px auto;
+    width: 400px;
+    height: 200px;
     box-shadow: 2px 2px 5px rgb(0, 0, 0);
     position: relative;
 }
