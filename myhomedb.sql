@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 16, 2020 at 10:08 AM
+-- Generation Time: Sep 21, 2020 at 06:42 PM
 -- Server version: 8.0.21-0ubuntu0.20.04.4
 -- PHP Version: 7.4.3
 
@@ -21,6 +21,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `myhomedb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `note`
+--
+
+CREATE TABLE `note` (
+  `id` mediumint NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `content` varchar(5000) DEFAULT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `note`
+--
+
+INSERT INTO `note` (`id`, `title`, `content`, `date`) VALUES
+(1, 'test1', 'testfaasdfadsfdasfasdf', '2020-09-17 11:38:36'),
+(2, 'test2', 'ddddd', '2020-09-17 11:43:19'),
+(3, 'test3', 'ddddd', '2020-09-17 11:43:19'),
+(4, 'test4', 'eeeee', '2020-09-17 11:43:19');
 
 -- --------------------------------------------------------
 
@@ -69,6 +92,12 @@ INSERT INTO `vocab` (`id`, `vocab`, `part_of_speech`, `translation1`, `translati
 --
 
 --
+-- Indexes for table `note`
+--
+ALTER TABLE `note`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `vocab`
 --
 ALTER TABLE `vocab`
@@ -79,10 +108,16 @@ ALTER TABLE `vocab`
 --
 
 --
+-- AUTO_INCREMENT for table `note`
+--
+ALTER TABLE `note`
+  MODIFY `id` mediumint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `vocab`
 --
 ALTER TABLE `vocab`
-  MODIFY `id` mediumint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` mediumint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

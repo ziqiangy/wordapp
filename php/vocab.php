@@ -5,8 +5,8 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 // $sql = "SELECT * FROM `vocab` LIMIT 1 OFFSET 1";
 $sql = "SELECT * FROM `vocab` LIMIT 1 OFFSET ".$_POST["offset"];
-$pdo = new DB;
-$data = $pdo->pdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+$db = new DB;
+$data = $db->pdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 if($data){
     echo json_encode($data);
 } else {
