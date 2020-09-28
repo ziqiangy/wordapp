@@ -22,8 +22,28 @@ export default class Notes extends React.Component{
     }
 
     handleSubmit(event) {
-        alert('the note title is: ' + this.state.noteTitle + ' the note content is: '+ this.state.noteContent + ' the note date is: ' + this.state.noteDate);
         event.preventDefault();
+
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+        var urlencoded = new URLSearchParams();
+        urlencoded.append("title", this.state.noteTitle);
+        urlencoded.append("content", this.state.noteContent);
+        urlencoded.append("date", this.state.noteDate);
+
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: urlencoded,
+        redirect: 'follow'
+        };
+
+        fetch("http://localhost/myhomeapp/php/notes/addNotes.php", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
     }
     render(){
         return(
