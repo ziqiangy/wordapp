@@ -57,7 +57,8 @@ export default class WordList extends React.Component {
             redirect: 'follow'
         }
 
-        fetch("http://ubuntugui-imac/word-app/php/vocab.php", options)
+
+        fetch("http://peteryuanmac/myhomeapp/php/vocab.php", options)
             .then(response => response.json())
             .then(result => {
                 const vocab = result[0];
