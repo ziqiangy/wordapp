@@ -6,7 +6,8 @@ export default class Notes extends React.Component{
         this.state = {
             noteTitle: '',
             noteContent: '',
-            noteDate: ''
+            noteDate: '',
+            currentTime: new Date()
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,7 +19,6 @@ export default class Notes extends React.Component{
         this.setState({
             [name]: target.value
         });
-        // this.setState({noteTitle: event.target.value});
     }
 
     handleSubmit(event) {
@@ -66,13 +66,14 @@ export default class Notes extends React.Component{
                             <textarea rows="5" className="form-control" id="noteContent" name="noteContent" value={this.state.noteContent} onChange={this.handleInputChange} />
                             </div>
                         </div>
-                        <div className="form-group row">
+                        {/* <div className="form-group row">
                             <label htmlFor="noteDate" className="col-sm-2 col-form-label">Date</label>
                             <div className="col-sm-10">
                             <input type="text" className="form-control" id="noteDate" name="noteDate" value={this.state.noteDate} onChange={this.handleInputChange} />
                             </div>
-                        </div>
+                        </div> */}
                         <input type="submit" className="btn btn-outline-dark mb-2" value="Save" />
+                        
                     </form>
                 </div>
             </div>
