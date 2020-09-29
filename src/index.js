@@ -4,12 +4,32 @@ import './index.css';
 // import App from './App';
 import WordList from './WordList';
 import Notes from './Notes';
+import NotesList from './NotesList';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <WordList />
-    <Notes />
+
+
+
+<div className="container-fluid">
+  <div className="row">
+    <div className="col-sm">
+      One of three columns
+      <WordList />
+    </div>
+    <div className="col-sm">
+      One of three columns
+      <Notes />
+    </div>
+    <div className="col-sm">
+      One of three columns
+      <NotesList />
+    </div>
+  </div>
+</div>
+    
+    
   </React.StrictMode>,
   document.getElementById('root')
 );

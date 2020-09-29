@@ -1,4 +1,4 @@
-.notes-board{
+.notes-list-board{
     border-radius: 15px;
     background-color: lightyellow;
     margin: 10px auto;
@@ -8,7 +8,9 @@
     position: relative;
 }
 
-.notes-card{
+.notes-list-card{
+    overflow: scroll;
+    height: 90%;
     padding:10px;
     width:100%;
     position: absolute;
@@ -18,6 +20,6 @@
     /* transform: translate(-50%,-50%); */
 }
 
-.notes-header{
+.notes-list-header{
     position:relative
 }
