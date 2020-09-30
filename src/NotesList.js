@@ -14,6 +14,7 @@ export default class NotesList extends React.Component{
         }
         this.clickX = this.clickX.bind(this);
         this.click = this.click.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
 
@@ -45,6 +46,27 @@ export default class NotesList extends React.Component{
         this.setState({show:false});
     }
 
+    handleDelete = (id) => {
+        // alert(id);
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+        var urlencoded = new URLSearchParams();
+        urlencoded.append("id", id);
+
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: urlencoded,
+        redirect: 'follow'
+        };
+
+        fetch("http://localhost/myhomeapp/php/notes/deleteNotes.php", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    }
+
     render(){
         return(
             <div>
@@ -60,6 +82,7 @@ export default class NotesList extends React.Component{
                             {this.state.header.map((ans,i)=>
                                 <th scope="col" key={i.toString()}>{ans}</th>
                             )}
+                            <th scope="col">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -72,6 +95,7 @@ export default class NotesList extends React.Component{
                                             <td key={i.toString()}>{row[item]}</td>
                                         )
                                     })}
+                                    <td key={i.toString()} onClick={()=>this.handleDelete(row['id'])}>Delete</td>
                                 </tr>
                             )
                         })}
