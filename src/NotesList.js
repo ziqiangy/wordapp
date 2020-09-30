@@ -12,6 +12,8 @@ export default class NotesList extends React.Component{
             tableData: [],
             show: false
         }
+        this.clickX = this.clickX.bind(this);
+        this.click = this.click.bind(this);
     }
 
 
@@ -37,7 +39,10 @@ export default class NotesList extends React.Component{
 
     click = () => {
         this.setState({show:true});
+    }
 
+    clickX = () => {
+        this.setState({show:false});
     }
 
     render(){
@@ -45,7 +50,8 @@ export default class NotesList extends React.Component{
             <div>
                 <div className="notes-list-board">
                     <div className="notes-list-header">
-                        <h3 onClick={()=>this.click()}>+</h3>
+                        <span onClick={()=>this.click()}>+</span>
+                        {/* <span onClick={()=>this.clickX()}>x</span> */}
                     </div>
                     <div className ="notes-list-card">
                     <table className="table table-striped table-hover">
@@ -73,7 +79,7 @@ export default class NotesList extends React.Component{
                     </table>
                     </div>
                 </div>
-                <Notes show={this.state.show} />
+                <Notes show = {this.state.show} handler = {this.clickX} />
             </div>
         )
     }

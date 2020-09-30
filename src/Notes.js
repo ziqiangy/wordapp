@@ -21,6 +21,7 @@ export default class Notes extends React.Component{
         });
     }
 
+
     handleSubmit(event) {
         event.preventDefault();
 
@@ -51,7 +52,7 @@ export default class Notes extends React.Component{
                 <div className="notes-board">
                     
                     <div className="notes-header">
-                        
+                    <p onClick={this.props.handler}>x</p>
                     </div>
                     <div className ="notes-card">
                         <form onSubmit={this.handleSubmit}>
