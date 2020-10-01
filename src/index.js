@@ -3,13 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 // import App from './App';
 import WordList from './WordList';
-import NotesList from './NotesList';
+import Note from './Note/Note'
+// import NotesList from './NotesList';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-
-
 
 <div className="container-fluid">
   <div className="row">
@@ -17,13 +16,13 @@ ReactDOM.render(
       One of three columns
       <WordList />
     </div>
-    {/* <div className="col-sm">
-      One of three columns
-      
-    </div> */}
     <div className="col-sm">
       One of three columns
-      <NotesList />
+      <Note />
+    </div>
+    <div className="col-sm">
+      One of three columns
+      {/* <NotesList /> */}
     </div>
   </div>
 </div>

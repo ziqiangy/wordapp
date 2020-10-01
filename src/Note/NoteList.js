@@ -1,9 +1,7 @@
 import React from 'react';
-import Notes from './Notes';
-import NotesUpdate from './NotesUpdate';
-import './NotesList.css'
-export default class NotesList extends React.Component{
-    
+import NoteEdit from './NoteEdit';
+export default class NoteList extends React.Component{
+
     constructor(props){
         super(props);
         this.state = {
@@ -12,38 +10,23 @@ export default class NotesList extends React.Component{
             // index: ['title','content','insert_date'],
             index: ['title', 'insert_date'],
             tableData: [],
-            showAdd: false,
-            showUpdate: false,
-            updateData: []
+            showEdit: false,
+            editData: []
+            
         }
-        this.openAdd = this.openAdd.bind(this);
-        this.closeAdd = this.closeAdd.bind(this);
-        this.openUpdate = this.openUpdate.bind(this);
-        this.closeUpdate = this.closeUpdate.bind(this);
+
+        this.fetchData = this.fetchData.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
+        this.openEdit = this.openEdit.bind(this);
+        this.closeEdit = this.closeEdit.bind(this);
     }
 
     componentDidMount(){
         this.fetchData()
     }
 
-    openAdd = () => {
-        this.setState({showAdd:true});
-    }
-
-    closeAdd = () => {
-        this.setState({showAdd:false});
-    }
-
-    openUpdate = () => {
-        this.setState({showUpdate:true});
-    }
-
-    closeUpdate = () => {
-        this.setState({showUpdate:false});
-    }
-
-    fetchData(){
+    fetchData = () => {
         var requestOptions = {
             method: 'POST',
             redirect: 'follow'
@@ -52,14 +35,23 @@ export default class NotesList extends React.Component{
           fetch("http://localhost/myhomeapp/php/notes/NoteList.php", requestOptions)
             .then(response => response.json())
             .then(result => {
-                // console.log(result)
-                this.setState({tableData: result})
+                console.log(result)
+                this.setState({tableData:result})
+                // this.setState({tableData: result}, ()=>{console.log(this.state.tableData)})
             })
             .catch(error => console.log('error', error));
     }
 
-    fetchOneRowData(id){
-        this.openUpdate();
+    openEdit = () => {
+        this.setState({showEdit:true});
+    }
+
+    closeEdit = () => {
+        this.setState({showEdit:false});
+    }
+
+    handleEdit = (id) => {
+        this.openEdit();
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -76,9 +68,7 @@ export default class NotesList extends React.Component{
         fetch("http://localhost/myhomeapp/php/notes/searchNotes.php", requestOptions)
         .then(response => response.json())
         .then(result => {
-            // console.log(result)
-            // this.setState({updateData:result},()=>{console.log(this.state.updateData)});
-            this.setState({updateData:result});
+            this.setState({editData:result},()=>(console.log(this.state.editData)));
 
         })
         .catch(error => console.log('error', error));
@@ -106,15 +96,15 @@ export default class NotesList extends React.Component{
     }
 
     render(){
-        return(
-            <div>
-                <div className="notes-list-board">
-                    <div className="notes-list-header">
-                        <span onClick={()=>this.openAdd()}>Add</span>
-                        {/* <span onClick={()=>this.openUpdate()}>Update</span> */}
-                        {/* <span onClick={()=>this.clickX()}>x</span> */}
+        if(this.state.showEdit){
+            return(<NoteEdit handler = {this.closeEdit} editData = {this.state.editData} />)
+        }else{
+            return(
+                <div className="board">
+                    <div className="board-header">
+                        <span onClick={this.props.handleAdd}>Add</span>
                     </div>
-                    <div className ="notes-list-card">
+                    <div className ="board-body">
                     <table className="table table-striped table-hover">
                         <thead>
                         <tr>
@@ -126,7 +116,7 @@ export default class NotesList extends React.Component{
                         </thead>
                         <tbody>
                         {this.state.tableData.map((row,i)=>{
-                            // console.log(row.Name);
+                            // console.log(row.id);
                             return(
                                 <tr key={i.toString()}>
                                     {this.state.index.map((item,i)=>{
@@ -136,7 +126,7 @@ export default class NotesList extends React.Component{
                                     })}
                                     <td key={i.toString()}>
                                     <span onClick={()=>this.handleDelete(row['id'])}>Delete</span>
-                                    <span onClick={()=>this.fetchOneRowData(row['id'])}>Edit</span>
+                                    <span onClick={()=>this.handleEdit(row['id'])}>Edit</span>
                                     </td>
                                 </tr>
                             )
@@ -145,9 +135,7 @@ export default class NotesList extends React.Component{
                     </table>
                     </div>
                 </div>
-                <Notes show = {this.state.showAdd} handler = {this.closeAdd} />
-                <NotesUpdate show = {this.state.showUpdate} handler = {this.closeUpdate} updateData = {this.state.updateData} />
-            </div>
-        )
+            )
+        }
     }
 }
