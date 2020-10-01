@@ -17,10 +17,10 @@ ReactDOM.render(
       One of three columns
       <WordList />
     </div>
-    <div className="col-sm">
+    {/* <div className="col-sm">
       One of three columns
       
-    </div>
+    </div> */}
     <div className="col-sm">
       One of three columns
       <NotesList />

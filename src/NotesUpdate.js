@@ -1,17 +1,22 @@
 import React from 'react';
-import './Notes.css'
-export default class Notes extends React.Component{
+import './NotesUpdate.css';
+export default class NotesUpdate extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             noteTitle: '',
             noteContent: '',
-            noteDate: '',
-            currentTime: new Date()
+            // noteTitle: 'hi',
+            // noteContent: ''
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    // componentDidMount(){
+    //     this.setState({noteTitle:this.props.updateData.title});
+    //     this.setState({noteContent:this.props.updateData.content});
+    // }
 
     handleInputChange(event) {
         const target = event.target;
@@ -21,17 +26,15 @@ export default class Notes extends React.Component{
         });
     }
 
-
-    handleSubmit(event) {
+    handleSubmit(event){
         event.preventDefault();
-
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
         var urlencoded = new URLSearchParams();
+        urlencoded.append("id", this.props.updateData.id);
         urlencoded.append("title", this.state.noteTitle);
         urlencoded.append("content", this.state.noteContent);
-        urlencoded.append("date", this.state.noteDate);
 
         var requestOptions = {
         method: 'POST',
@@ -40,47 +43,54 @@ export default class Notes extends React.Component{
         redirect: 'follow'
         };
 
-        fetch("http://localhost/myhomeapp/php/notes/addNotes.php", requestOptions)
+        fetch("http://localhost/myhomeapp/php/notes/updateNotes.php", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
-
     }
+
     render(){
         if(this.props.show){
             return(
-                <div className="notes-board">
-                    
-                    <div className="notes-header">
+            <div className="notes-update-board">
+                    <div className="notes-update-header">
                     <p onClick={this.props.handler}>x</p>
                     </div>
-                    <div className ="notes-card">
+                    <div className ="notes-update-card">
                         <form onSubmit={this.handleSubmit}>
                             <div className="form-group row">
                                 <label htmlFor="noteTitle" className="col-sm-2 col-form-label">Title</label>
                                 <div className="col-sm-10">
-                                <input type="text" className="form-control" id="noteTitle" name="noteTitle" value={this.state.noteTitle} onChange={this.handleInputChange} />
+                                <input 
+                                    type="text" 
+                                    className="form-control" 
+                                    id="noteTitle" 
+                                    name="noteTitle" 
+                                    defaultValue={this.state.noteTitle||this.props.updateData.title} 
+                                    onChange={this.handleInputChange}
+                                />
                                 </div>
                             </div>
                             <div className="form-group row">
                                 <label htmlFor="noteContent" className="col-sm-2 col-form-label">Content</label>
                                 <div className="col-sm-10">
-                                <textarea rows="5" className="form-control" id="noteContent" name="noteContent" value={this.state.noteContent} onChange={this.handleInputChange} />
+                                <textarea 
+                                    rows="5" 
+                                    className="form-control" 
+                                    id="noteContent" 
+                                    name="noteContent" 
+                                    defaultValue={this.state.noteContent||this.props.updateData.content} 
+                                    onChange={this.handleInputChange}
+                                />
                                 </div>
                             </div>
-                            {/* <div className="form-group row">
-                                <label htmlFor="noteDate" className="col-sm-2 col-form-label">Date</label>
-                                <div className="col-sm-10">
-                                <input type="text" className="form-control" id="noteDate" name="noteDate" value={this.state.noteDate} onChange={this.handleInputChange} />
-                                </div>
-                            </div> */}
-                            <input type="submit" className="btn btn-outline-dark mb-2" value="Add" />
-                            
+                            {/* <h1>{this.props.updateData.title}</h1> */}
+                            <input type="submit" className="btn btn-outline-dark mb-2" value="Update" />
                         </form>
                     </div>
                 </div>
-            )
-        }else{
+        )
+        } else {
             return(<div/>)
         }
     }
