@@ -11,12 +11,11 @@ export default class NoteList extends React.Component{
             index: ['title', 'insert_date'],
             tableData: [],
             showEdit: false,
-            editData: []
-            
+            editId: ''
         }
 
         this.fetchData = this.fetchData.bind(this);
-        this.handleEdit = this.handleEdit.bind(this);
+        this.getEditId = this.getEditId.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.openEdit = this.openEdit.bind(this);
         this.closeEdit = this.closeEdit.bind(this);
@@ -24,6 +23,10 @@ export default class NoteList extends React.Component{
 
     componentDidMount(){
         this.fetchData()
+    }
+
+    getEditId (id) {
+        this.setState({editId:id},this.openEdit())
     }
 
     fetchData = () => {
@@ -50,30 +53,6 @@ export default class NoteList extends React.Component{
         this.setState({showEdit:false});
     }
 
-    handleEdit = (id) => {
-        this.openEdit();
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-
-        var urlencoded = new URLSearchParams();
-        urlencoded.append("id", id);
-
-        var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: urlencoded,
-        redirect: 'follow'
-        };
-
-        fetch("http://localhost/myhomeapp/php/notes/searchNotes.php", requestOptions)
-        .then(response => response.json())
-        .then(result => {
-            this.setState({editData:result},()=>(console.log(this.state.editData)));
-
-        })
-        .catch(error => console.log('error', error));
-    }
-
     handleDelete = (id) => {
         // alert(id);
         var myHeaders = new Headers();
@@ -97,7 +76,7 @@ export default class NoteList extends React.Component{
 
     render(){
         if(this.state.showEdit){
-            return(<NoteEdit handler = {this.closeEdit} editData = {this.state.editData} />)
+            return(<NoteEdit handler = {this.closeEdit} editId = {this.state.editId} />)
         }else{
             return(
                 <div className="board">
@@ -126,7 +105,7 @@ export default class NoteList extends React.Component{
                                     })}
                                     <td key={i.toString()}>
                                     <span onClick={()=>this.handleDelete(row['id'])}>Delete</span>
-                                    <span onClick={()=>this.handleEdit(row['id'])}>Edit</span>
+                                    <span onClick={()=>this.getEditId(row['id'])}>Edit</span>
                                     </td>
                                 </tr>
                             )

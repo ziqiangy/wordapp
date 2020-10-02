@@ -24,14 +24,15 @@ export default class WordList extends React.Component {
 
     next = () => {
         this.setState({show: false})
-        this.setState({count: this.state.count+1})
-        this.fetchWord(this.state.count+1)
+        this.setState({count: this.state.count+1},()=>{this.fetchWord(this.state.count)})
+        //Always remember that setState won't execute immediately. If you want Popup.show() after setState, you can use a callback
+        // this.fetchWord(this.state.count+1)
     }
 
     last = () => {
         this.setState({show: false})
-        this.setState({count: this.state.count-1})
-        this.fetchWord(this.state.count-1)
+        this.setState({count: this.state.count-1},()=>{this.fetchWord(this.state.count)})
+        // this.fetchWord(this.state.count-1)
     }
     
     switch = () => {

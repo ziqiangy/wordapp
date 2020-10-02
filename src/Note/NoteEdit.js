@@ -3,12 +3,46 @@ export default class NoteEdit extends React.Component{
     constructor(props){
         super(props);
         this.state = {
+            noteId: '',
             noteTitle: '',
-            noteContent: '',
-        
+            noteContent: ''
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
+    }
+
+    componentDidMount(){
+        this.handleEdit(this.props.editId);
+    }
+
+    handleEdit(id){
+        
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+        var urlencoded = new URLSearchParams();
+        urlencoded.append("id", id);
+
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: urlencoded,
+        redirect: 'follow'
+        };
+
+        fetch("http://localhost/myhomeapp/php/notes/searchNotes.php", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            this.setState({
+                noteId: result.id,
+                noteTitle: result.title,
+                noteContent: result.content
+            });
+            // this.setState({editData:result});
+
+        })
+        .catch(error => console.log('error', error));
     }
 
     handleInputChange(event) {
@@ -25,7 +59,7 @@ export default class NoteEdit extends React.Component{
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
         var urlencoded = new URLSearchParams();
-        urlencoded.append("id", this.props.editData.id);
+        urlencoded.append("id", this.state.noteId);
         urlencoded.append("title", this.state.noteTitle);
         urlencoded.append("content", this.state.noteContent);
 
@@ -49,6 +83,7 @@ export default class NoteEdit extends React.Component{
                 <p onClick={this.props.handler}>{"<-"}</p>
                 </div>
                 <div className ="board-body">
+                    {/* <h1>id {this.state.editData.id}</h1> */}
                     <form onSubmit={this.handleSubmit}>
                         <div className="form-group row">
                             <label htmlFor="noteTitle" className="col-sm-2 col-form-label">Title</label>
@@ -58,7 +93,7 @@ export default class NoteEdit extends React.Component{
                                 className="form-control" 
                                 id="noteTitle" 
                                 name="noteTitle" 
-                                defaultValue={this.state.noteTitle||this.props.editData.title} 
+                                value={this.state.noteTitle} 
                                 onChange={this.handleInputChange}
                             />
                             </div>
@@ -71,7 +106,7 @@ export default class NoteEdit extends React.Component{
                                 className="form-control" 
                                 id="noteContent" 
                                 name="noteContent" 
-                                defaultValue={this.state.noteContent||this.props.editData.content} 
+                                value={this.state.noteContent} 
                                 onChange={this.handleInputChange}
                             />
                             </div>
