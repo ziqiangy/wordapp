@@ -1,4 +1,5 @@
 import React from 'react';
+import goBackIcon from '../icons/arrow-circle-left-solid.svg';
 export default class NoteAdd extends React.Component{
     constructor(props){
         super(props);
@@ -49,7 +50,7 @@ export default class NoteAdd extends React.Component{
         return(
             <div className="board">
                 <div className="board-header">
-                <p onClick={this.props.handler}>{"<-"}</p>
+                <div onClick={this.props.handler}><a href="#"><img src={goBackIcon}/></a></div>
                 </div>
                 <div className ="board-body">
                     <form onSubmit={this.handleSubmit}>

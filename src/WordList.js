@@ -76,9 +76,9 @@ export default class WordList extends React.Component {
             <div className="word-board">
                 
                 <div className="word-header">
-                    <div className="last-page-button" onClick={()=>this.last()}><img src={leftArrow} /></div>
-                    <div className="show-hide-button" onClick={()=>this.switch()}>{this.state.show? <img src={closedEye} /> : <img src={openedEye} />}</div>
-                    <div className="next-page-button" onClick={()=>this.next()}><img src={rightArrow} /></div>
+                    <div className="last-page-button" onClick={()=>this.last()}><a href="#"><img src={leftArrow} /></a></div>
+                    <div className="show-hide-button" onClick={()=>this.switch()}><a href="#">{this.state.show? <img src={closedEye} /> : <img src={openedEye} />}</a></div>
+                    <div className="next-page-button" onClick={()=>this.next()}><a href="#"><img src={rightArrow} /></a></div>
                     <div className="vocab-link"><a href={"https://www.vocabulary.com/dictionary/"+this.state.vocab.vocab} target="_blank"><img src={externalLink} /></a></div>
                 </div>
                 <div className ="word-card">

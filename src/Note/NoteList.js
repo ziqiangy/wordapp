@@ -1,5 +1,8 @@
 import React from 'react';
 import NoteEdit from './NoteEdit';
+import addIcon from '../icons/plus-circle-solid.svg';
+import editIcon from '../icons/edit-solid.svg';
+import deleteIcon from '../icons/trash-alt-solid.svg';
 export default class NoteList extends React.Component{
 
     constructor(props){
@@ -38,7 +41,7 @@ export default class NoteList extends React.Component{
           fetch("http://localhost/myhomeapp/php/notes/NoteList.php", requestOptions)
             .then(response => response.json())
             .then(result => {
-                console.log(result)
+                // console.log(result)
                 this.setState({tableData:result})
                 // this.setState({tableData: result}, ()=>{console.log(this.state.tableData)})
             })
@@ -81,7 +84,8 @@ export default class NoteList extends React.Component{
             return(
                 <div className="board">
                     <div className="board-header">
-                        <span onClick={this.props.handleAdd}>Add</span>
+                        <div onClick={this.props.handleAdd}><a href="#"><img src={addIcon}/></a></div>
+                        {/* <span onClick={this.props.handleAdd}>Add</span> */}
                     </div>
                     <div className ="board-body">
                     <table className="table table-striped table-hover">
@@ -104,8 +108,8 @@ export default class NoteList extends React.Component{
                                         )
                                     })}
                                     <td key={i.toString()}>
-                                    <span onClick={()=>this.handleDelete(row['id'])}>Delete</span>
-                                    <span onClick={()=>this.getEditId(row['id'])}>Edit</span>
+                                        <span onClick={()=>this.getEditId(row['id'])}><a href="#"><img src={editIcon}/></a></span>
+                                        <span onClick={()=>this.handleDelete(row['id'])}><a href="#"><img src={deleteIcon}/></a></span>
                                     </td>
                                 </tr>
                             )

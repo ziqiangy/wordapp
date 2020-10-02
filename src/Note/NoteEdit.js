@@ -1,4 +1,5 @@
 import React from 'react';
+import goBackIcon from '../icons/arrow-circle-left-solid.svg';
 export default class NoteEdit extends React.Component{
     constructor(props){
         super(props);
@@ -17,7 +18,7 @@ export default class NoteEdit extends React.Component{
     }
 
     handleEdit(id){
-        
+
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -80,7 +81,7 @@ export default class NoteEdit extends React.Component{
         return(
             <div className="board">
                 <div className="board-header">
-                <p onClick={this.props.handler}>{"<-"}</p>
+                    <div onClick={this.props.handler}><a href="#"><img src={goBackIcon}/></a></div>
                 </div>
                 <div className ="board-body">
                     {/* <h1>id {this.state.editData.id}</h1> */}
