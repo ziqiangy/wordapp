@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 // import App from './App';
 import WordList from './WordList';
-import Note from './Note/Note'
-// import NotesList from './NotesList';
+import Note from './Note/Note';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
@@ -22,7 +21,6 @@ ReactDOM.render(
     </div>
     <div className="col-sm">
       One of three columns
-      {/* <NotesList /> */}
     </div>
   </div>
 </div>
