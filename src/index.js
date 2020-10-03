@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 // import App from './App';
-import WordList from './WordList';
-import Note from './Note/Note';
+import Board from './Board';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
@@ -12,16 +11,16 @@ ReactDOM.render(
 <div className="container-fluid">
   <div className="row">
     <div className="col-sm">
+      {/* One of three columns */}
+      <Board />
+    </div>
+    {/* <div className="col-sm">
       One of three columns
-      <WordList />
+      
     </div>
     <div className="col-sm">
       One of three columns
-      <Note />
-    </div>
-    <div className="col-sm">
-      One of three columns
-    </div>
+    </div> */}
   </div>
 </div>
     
