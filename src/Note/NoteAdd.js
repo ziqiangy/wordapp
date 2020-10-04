@@ -43,7 +43,13 @@ export default class NoteAdd extends React.Component{
         fetch("http://localhost/myhomeapp/php/notes/addNotes.php", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+        .catch(error => console.log('error', error))
+        .then(()=>{
+            this.props.handler();
+        this.props.fetchData();
+        });
+
+        
 
     }
     render(){

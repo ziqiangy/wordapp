@@ -5,7 +5,7 @@ include('../DB.php');
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 $db = new DB;
-$sql = "SELECT * FROM `note`";
+$sql = "SELECT * FROM `note` ORDER BY `id` DESC";
 $data = $db->pdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 if($data){
     echo json_encode($data);

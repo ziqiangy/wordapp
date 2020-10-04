@@ -74,7 +74,11 @@ export default class NoteEdit extends React.Component{
         fetch("http://localhost/myhomeapp/php/notes/updateNotes.php", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+        .catch(error => console.log('error', error))
+        .then(()=>{
+            this.props.fetchData();
+            this.props.handler();
+        });
     }
 
     render(){
@@ -113,6 +117,7 @@ export default class NoteEdit extends React.Component{
                             </div>
                         </div>
                         <input type="submit" className="btn btn-outline-dark mb-2" value="Update" />
+                        {/* <div className="btn btn-outline-dark mb-2 ml-2" onClick={this.props.handleDelete(this.state.noteId)}>Delete</div> */}
                     </form>
                 </div>
             </div>

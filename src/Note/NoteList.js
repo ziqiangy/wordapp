@@ -12,12 +12,11 @@ export default class NoteList extends React.Component{
             header: ['Title', 'Insert Date'],
             // index: ['title','content','insert_date'],
             index: ['title', 'insert_date'],
-            tableData: [],
             showEdit: false,
             editId: ''
         }
 
-        this.fetchData = this.fetchData.bind(this);
+        
         this.getEditId = this.getEditId.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.openEdit = this.openEdit.bind(this);
@@ -25,28 +24,14 @@ export default class NoteList extends React.Component{
     }
 
     componentDidMount(){
-        this.fetchData()
+        this.props.fetchData()
     }
 
     getEditId (id) {
         this.setState({editId:id},this.openEdit())
     }
 
-    fetchData = () => {
-        var requestOptions = {
-            method: 'POST',
-            redirect: 'follow'
-          };
-          
-          fetch("http://localhost/myhomeapp/php/notes/NoteList.php", requestOptions)
-            .then(response => response.json())
-            .then(result => {
-                // console.log(result)
-                this.setState({tableData:result})
-                // this.setState({tableData: result}, ()=>{console.log(this.state.tableData)})
-            })
-            .catch(error => console.log('error', error));
-    }
+    
 
     openEdit = () => {
         this.setState({showEdit:true});
@@ -56,7 +41,7 @@ export default class NoteList extends React.Component{
         this.setState({showEdit:false});
     }
 
-    handleDelete = (id) => {
+    handleDelete(id){
         // alert(id);
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
@@ -74,12 +59,17 @@ export default class NoteList extends React.Component{
         fetch("http://localhost/myhomeapp/php/notes/deleteNotes.php", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+        .catch(error => console.log('error', error))
+        // .then(()=>{
+        //     this.props.fetchData();
+        //     this.closeEdit();
+        // })
+        ;
     }
 
     render(){
         if(this.state.showEdit){
-            return(<NoteEdit handler = {this.closeEdit} editId = {this.state.editId} />)
+            return(<NoteEdit handler = {this.closeEdit} editId = {this.state.editId} fetchData = {this.props.fetchData} handleDelete = {this.handleDelete} />)
         }else{
             return(
                 <div className="board">
@@ -98,7 +88,7 @@ export default class NoteList extends React.Component{
                         </tr>
                         </thead>
                         <tbody>
-                        {this.state.tableData.map((row,i)=>{
+                        {this.props.tableData.map((row,i)=>{
                             // console.log(row.id);
                             return(
                                 <tr key={i.toString()}>
@@ -109,7 +99,7 @@ export default class NoteList extends React.Component{
                                     })}
                                     <td key={i.toString()}>
                                         <span onClick={()=>this.getEditId(row['id'])}><a href="#"><img src={editIcon}/></a></span>
-                                        <span onClick={()=>this.handleDelete(row['id'])}><a href="#"><img src={deleteIcon}/></a></span>
+                                        {/* <span onClick={()=>this.handleDelete(row['id'])}><a href="#"><img src={deleteIcon}/></a></span> */}
                                     </td>
                                 </tr>
                             )
