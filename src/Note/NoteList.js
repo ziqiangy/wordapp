@@ -18,7 +18,6 @@ export default class NoteList extends React.Component{
 
         
         this.getEditId = this.getEditId.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
         this.openEdit = this.openEdit.bind(this);
         this.closeEdit = this.closeEdit.bind(this);
     }
@@ -41,35 +40,11 @@ export default class NoteList extends React.Component{
         this.setState({showEdit:false});
     }
 
-    handleDelete(id){
-        // alert(id);
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-
-        var urlencoded = new URLSearchParams();
-        urlencoded.append("id", id);
-
-        var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: urlencoded,
-        redirect: 'follow'
-        };
-
-        fetch("http://localhost/myhomeapp/php/notes/deleteNotes.php", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error))
-        // .then(()=>{
-        //     this.props.fetchData();
-        //     this.closeEdit();
-        // })
-        ;
-    }
+    
 
     render(){
         if(this.state.showEdit){
-            return(<NoteEdit handler = {this.closeEdit} editId = {this.state.editId} fetchData = {this.props.fetchData} handleDelete = {this.handleDelete} />)
+            return(<NoteEdit closeEdit = {this.closeEdit} editId = {this.state.editId} fetchData = {this.props.fetchData} />)
         }else{
             return(
                 <div className="board">

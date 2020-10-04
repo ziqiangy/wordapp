@@ -11,6 +11,7 @@ export default class NoteEdit extends React.Component{
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentDidMount(){
@@ -77,7 +78,32 @@ export default class NoteEdit extends React.Component{
         .catch(error => console.log('error', error))
         .then(()=>{
             this.props.fetchData();
-            this.props.handler();
+            this.props.closeEdit();
+        });
+    }
+
+    handleDelete(id){
+        // alert(id);
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+        var urlencoded = new URLSearchParams();
+        urlencoded.append("id", id);
+
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: urlencoded,
+        redirect: 'follow'
+        };
+
+        fetch("http://localhost/myhomeapp/php/notes/deleteNotes.php", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error))
+        .then(()=>{
+            this.props.fetchData();
+            this.props.closeEdit();
         });
     }
 
@@ -85,7 +111,7 @@ export default class NoteEdit extends React.Component{
         return(
             <div className="board">
                 <div className="board-header">
-                    <div onClick={this.props.handler}><a href="#"><img src={goBackIcon}/></a></div>
+                    <div onClick={this.props.closeEdit}><a href="#"><img src={goBackIcon}/></a></div>
                 </div>
                 <div className ="board-body">
                     {/* <h1>id {this.state.editData.id}</h1> */}
@@ -117,8 +143,9 @@ export default class NoteEdit extends React.Component{
                             </div>
                         </div>
                         <input type="submit" className="btn btn-outline-dark mb-2" value="Update" />
-                        {/* <div className="btn btn-outline-dark mb-2 ml-2" onClick={this.props.handleDelete(this.state.noteId)}>Delete</div> */}
+                        
                     </form>
+                    <button className="btn btn-outline-dark mb-2 ml-2" onClick={()=>this.handleDelete(this.state.noteId)}>Delete</button>
                 </div>
             </div>
         )
