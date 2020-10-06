@@ -23,7 +23,7 @@ export default class Note extends React.Component{
             redirect: 'follow'
           };
           
-          fetch("http://localhost/myhomeapp/php/notes/NoteList.php", requestOptions)
+          fetch("http://peteryuanmac/myhomeapp/php/notes/NoteList.php", requestOptions)
             .then(response => response.json())
             .then(result => {
                 // console.log(result)

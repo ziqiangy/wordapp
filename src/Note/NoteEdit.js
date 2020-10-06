@@ -33,7 +33,7 @@ export default class NoteEdit extends React.Component{
         redirect: 'follow'
         };
 
-        fetch("http://localhost/myhomeapp/php/notes/searchNotes.php", requestOptions)
+        fetch("http://peteryuanmac/myhomeapp/php/notes/searchNotes.php", requestOptions)
         .then(response => response.json())
         .then(result => {
             this.setState({
@@ -72,7 +72,7 @@ export default class NoteEdit extends React.Component{
         redirect: 'follow'
         };
 
-        fetch("http://localhost/myhomeapp/php/notes/updateNotes.php", requestOptions)
+        fetch("http://peteryuanmac/myhomeapp/php/notes/updateNotes.php", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error))
@@ -97,7 +97,7 @@ export default class NoteEdit extends React.Component{
         redirect: 'follow'
         };
 
-        fetch("http://localhost/myhomeapp/php/notes/deleteNotes.php", requestOptions)
+        fetch("http://peteryuanmac/myhomeapp/php/notes/deleteNotes.php", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error))
