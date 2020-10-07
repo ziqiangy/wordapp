@@ -98,10 +98,10 @@ class Translation extends React.Component{
         if(this.props.show){
             return(
             <div className="translation">
-                <span>{this.props.vocab.part_of_speech}</span>
-                <span>{this.props.vocab.translation1}</span>;
-                <span>{this.props.vocab.translation2}</span>;
-                <span>{this.props.vocab.translation3}</span>
+                {/* <span>{this.props.vocab.part_of_speech}</span> */}
+                <span>{this.props.vocab.translation}</span>
+                {/* <span>{this.props.vocab.translation2}</span>; */}
+                {/* <span>{this.props.vocab.translation3}</span> */}
             </div> 
             )
         }else{

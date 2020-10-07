@@ -2,6 +2,7 @@
   "name": "word-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://peteryuanmac/myhomeapp/build/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -9,7 +10,8 @@
     "axios": "^0.20.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "unirest": "^0.6.0"
   },
   "scripts": {
     "start": "react-scripts start",
