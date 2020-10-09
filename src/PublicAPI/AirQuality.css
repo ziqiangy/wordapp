@@ -1,0 +1,13 @@
+.airquality-wedget li{
+    text-align:center;
+    white-space:nowrap;
+}
+
+.airquality-wedget ul{
+    list-style-type: none;
+    padding:0;
+    margin:0;
+}
+.airquality-wedget table{
+    border-collapse: separate;
+}

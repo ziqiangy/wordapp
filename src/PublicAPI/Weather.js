@@ -1,4 +1,5 @@
 import React from 'react';
+import "./Weather.css"
 export default class Weather extends React.Component{
     constructor(props){
         super(props);
@@ -33,7 +34,7 @@ export default class Weather extends React.Component{
         
         if (this.state.weather.data) {
             return(
-                <div>
+                <div className="weather-wedget" >
                     <table>
                         <thead>
 
@@ -44,11 +45,10 @@ export default class Weather extends React.Component{
                                     <td key={index}>
                                         <ul>
                                             <li>{row.valid_date}</li>
-                                            <li>{row.high_temp}</li>
-                                            <li>{row.temp}</li>
-                                            <li>{row.low_temp}</li>
+                                            <li>{row.high_temp}°C/{row.low_temp}°C</li>
+                                            {/* <li>{row.temp}</li> */}
                                             <li><img src={"https://www.weatherbit.io/static/img/icons/"+row.weather.icon+".png"} alt="weather_icon" /></li>
-                                            <li>{row.weather.description}</li>
+                                            {/* <li>{row.weather.description}</li> */}
                                         </ul>
                                     </td>
                                 ))}

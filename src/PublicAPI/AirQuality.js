@@ -1,4 +1,5 @@
 import React from 'react';
+import "./AirQuality.css"
 export default class AirQuality extends React.Component{
     constructor(props){
         super(props)
@@ -56,19 +57,24 @@ export default class AirQuality extends React.Component{
 
     render(){
         if(this.state.AqiData.data){
-            return(<div><table><thead></thead><tbody><tr>
-                {this.state.AqiData.data.map((item,index)=>(
-                    <td key={index} style={{backgroundColor:item.aqi_color}}>
-                        <ul>
-                            <li>{item.local_date}</li>
-                            <li>{item.local_time}</li>
-                            <li>{item.aqi}</li>
-                        </ul>
-                    </td>
-                    
-                ))}
-                </tr></tbody></table>
-                
+            return(
+            <div className="airquality-wedget">
+                <table>
+                    <thead></thead>
+                    <tbody>
+                        <tr>
+                            {this.state.AqiData.data.map((item,index)=>(
+                            <td key={index} style={{backgroundColor:item.aqi_color}}>
+                                <ul>
+                                    <li>{item.local_date}</li>
+                                    <li>{item.local_time}</li>
+                                    <li>{item.aqi}</li>
+                                </ul>
+                            </td>
+                            ))}
+                        </tr>
+                    </tbody>
+                </table>
             </div>)
         }else{
             return(<div>waiting for data</div>)

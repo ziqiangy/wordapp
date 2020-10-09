@@ -1,0 +1,9 @@
+.weather-wedget li{
+    text-align:center
+}
+
+.weather-wedget ul{
+    list-style-type: none;
+    padding:0;
+    margin:0;
+}
