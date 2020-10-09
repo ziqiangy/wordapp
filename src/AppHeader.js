@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './AppHeader.css';
 export default class AppHeader extends React.Component{
     constructor(props){
@@ -26,7 +26,7 @@ export default class AppHeader extends React.Component{
         fetch("https://weatherbit-v1-mashape.p.rapidapi.com/current?lang=en&lon=-111.658531&lat=40.233845", requestOptions)
         .then(response => response.json())
         .then(result => {
-            console.log(result)
+            // console.log(result)
             this.setState({headerWeather:result})
         })
         .catch(error => console.log('error', error));
@@ -39,7 +39,7 @@ export default class AppHeader extends React.Component{
                         {this.state.headerWeather.data[0].city_name}, 
                         {this.state.headerWeather.data[0].state_code} | 
                         {this.state.headerWeather.data[0].temp}°C 
-                        <img src={"https://www.weatherbit.io/static/img/icons/"+this.state.headerWeather.data[0].weather.icon+".png"}/> | 
+                        <img src={"https://www.weatherbit.io/static/img/icons/"+this.state.headerWeather.data[0].weather.icon+".png"} alt="show_weather_icon" /> | 
                         {this.state.headerWeather.data[0].aqi}</div>
                 </div>
             )

@@ -1,7 +1,6 @@
 import React from 'react';
 import NoteList from './NoteList'
 import NoteAdd from './NoteAdd';
-import './Note.css'
 export default class Note extends React.Component{
     
     constructor(props){

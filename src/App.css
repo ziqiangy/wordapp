@@ -1,1 +1,9 @@
 
+.icon-button{
+    cursor: pointer;
+    height: 25px;
+    object-fit: cover;
+}
+
+
+

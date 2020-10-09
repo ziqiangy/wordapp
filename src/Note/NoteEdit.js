@@ -111,7 +111,7 @@ export default class NoteEdit extends React.Component{
         return(
             <div className="board-wedget">
                 <div className="board-wedget-header">
-                    <div onClick={this.props.closeEdit}><a href="#"><img src={goBackIcon}/></a></div>
+                    <div onClick={this.props.closeEdit}><img className = "icon-button" src={goBackIcon} alt="Note_edit_go_back_icon"/></div>
                 </div>
                 <div className ="board-wedget-body">
                     {/* <h1>id {this.state.editData.id}</h1> */}

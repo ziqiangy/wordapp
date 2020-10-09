@@ -2,7 +2,6 @@ import React from 'react';
 import NoteEdit from './NoteEdit';
 import addIcon from '../icons/plus-circle-solid.svg';
 import editIcon from '../icons/edit-solid.svg';
-import deleteIcon from '../icons/trash-alt-solid.svg';
 export default class NoteList extends React.Component{
 
     constructor(props){
@@ -49,7 +48,7 @@ export default class NoteList extends React.Component{
             return(
                 <div className="board-wedget">
                     <div className="board-wedget-header">
-                        <div onClick={this.props.handleAdd}><a href="#"><img src={addIcon}/></a></div>
+                        <div onClick={this.props.handleAdd}><img className = "icon-button" src={addIcon} alt="Add_a_note"/></div>
                         {/* <span onClick={this.props.handleAdd}>Add</span> */}
                     </div>
                     <div className ="board-wedget-body">
@@ -73,8 +72,7 @@ export default class NoteList extends React.Component{
                                         )
                                     })}
                                     <td key={i.toString()}>
-                                        <span onClick={()=>this.getEditId(row['id'])}><a href="#"><img src={editIcon}/></a></span>
-                                        {/* <span onClick={()=>this.handleDelete(row['id'])}><a href="#"><img src={deleteIcon}/></a></span> */}
+                                        <span onClick={()=>this.getEditId(row['id'])}><img className = "icon-button" src={editIcon} alt="edit_a_note"/></span>
                                     </td>
                                 </tr>
                             )

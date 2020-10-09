@@ -2,8 +2,10 @@ import React from 'react';
 import './Board.css';
 import WordIcon from './icons/font-solid.svg';
 import NoteIcon from './icons/sticky-note-regular.svg';
+import WeatherIcon from './icons/cloud-solid.svg';
 import WordList from './WordList';
 import Note from './Note/Note';
+import PublicAPIGroup from './PublicAPI/PublicAPIGroup';
 
 export default class Board extends React.Component{
     constructor(props){
@@ -11,9 +13,12 @@ export default class Board extends React.Component{
         this.state = {
             wordOpen: true,
             noteOpen: true, 
+            weatherOpen: true,
         }
         this.HandleWordOpen = this.HandleWordOpen.bind(this);
         this.handleNoteOpen = this.handleNoteOpen.bind(this);
+        this.handlePublicAPIOpen = this.handlePublicAPIOpen.bind(this);
+
     }
 
     HandleWordOpen(){
@@ -22,17 +27,22 @@ export default class Board extends React.Component{
     handleNoteOpen(){
         this.setState({noteOpen:!this.state.noteOpen})
     }
+    handlePublicAPIOpen(){
+        this.setState({weatherOpen:!this.state.weatherOpen})
+    }
 
     render(){
         return(
             <div className="board">               
                 <div className="board-header">
-                    <div><a onClick={this.HandleWordOpen} href="#"><img className="app-img" src={WordIcon} /></a></div>
-                    <div><a onClick={this.handleNoteOpen} href="#"><img className="app-img" src={NoteIcon} /></a></div>
+                    <div><img onClick={this.HandleWordOpen} className="board-header-img-icon" src={WordIcon} alt="show_or_hide_wordlist" /></div>
+                    <div><img onClick={this.handleNoteOpen} className="board-header-img-icon" src={NoteIcon} alt="show_or_hide_note" /></div>
+                    <div><img onClick={this.handlePublicAPIOpen} className="board-header-img-icon" src={WeatherIcon} alt="show_or_hide_weather_or_PublicAPI" /></div>
                 </div>
                 <div className="board-body">
                     {this.state.wordOpen? <WordList />:<div/>}
                     {this.state.noteOpen? <Note />:<div/>}
+                    {this.state.weatherOpen? <PublicAPIGroup />:<div/>}
                 </div>
             </div>
         )
