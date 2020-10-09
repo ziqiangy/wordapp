@@ -3,30 +3,23 @@
     object-fit: cover;
     margin: 20px;
 }
-.app{
+.board{
     /* border:1px solid purple; */
     position:relative;
 }
-.app-header-weather{
-    max-width:600px;
-    margin:0 auto;
-    text-align: left;
-}
-.app-header-weather-fonts{
-    font-size: 24px;
-}
-.app-header{
+
+.board-header{
     /* border:1px solid green; */
     max-width:600px;
     margin:0 auto;
     text-align: center;
 }
-.app-header>div{
+.board-header>div{
     display:inline-block;
     
 }
 
-.app-board{
+.board-body{
     /* border:1px solid red; */
     max-width:600px;
     margin:0 auto;

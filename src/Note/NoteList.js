@@ -47,12 +47,12 @@ export default class NoteList extends React.Component{
             return(<NoteEdit closeEdit = {this.closeEdit} editId = {this.state.editId} fetchData = {this.props.fetchData} />)
         }else{
             return(
-                <div className="board">
-                    <div className="board-header">
+                <div className="board-wedget">
+                    <div className="board-wedget-header">
                         <div onClick={this.props.handleAdd}><a href="#"><img src={addIcon}/></a></div>
                         {/* <span onClick={this.props.handleAdd}>Add</span> */}
                     </div>
-                    <div className ="board-body">
+                    <div className ="board-wedget-body">
                     <table className="table table-striped table-hover">
                         <thead>
                         <tr>

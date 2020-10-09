@@ -54,11 +54,11 @@ export default class NoteAdd extends React.Component{
     }
     render(){
         return(
-            <div className="board">
-                <div className="board-header">
+            <div className="board-wedget">
+                <div className="board-wedget-header">
                 <div onClick={this.props.handler}><a href="#"><img src={goBackIcon}/></a></div>
                 </div>
-                <div className ="board-body">
+                <div className ="board-wedget-body">
                     <form onSubmit={this.handleSubmit}>
                         <div className="form-group row">
                             <label htmlFor="noteTitle" className="col-sm-2 col-form-label">Title</label>

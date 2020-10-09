@@ -1,30 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './App';
-import Board from './Board';
+import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-
-<div className="container-fluid">
-  <div className="row">
-    <div className="col-sm">
-      {/* One of three columns */}
-      <Board />
-    </div>
-    {/* <div className="col-sm">
-      One of three columns
-      
-    </div>
-    <div className="col-sm">
-      One of three columns
-    </div> */}
-  </div>
-</div>
-    
-    
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -109,11 +109,11 @@ export default class NoteEdit extends React.Component{
 
     render(){
         return(
-            <div className="board">
-                <div className="board-header">
+            <div className="board-wedget">
+                <div className="board-wedget-header">
                     <div onClick={this.props.closeEdit}><a href="#"><img src={goBackIcon}/></a></div>
                 </div>
-                <div className ="board-body">
+                <div className ="board-wedget-body">
                     {/* <h1>id {this.state.editData.id}</h1> */}
                     <form onSubmit={this.handleSubmit}>
                         <div className="form-group row">

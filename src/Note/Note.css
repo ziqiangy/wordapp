@@ -1,4 +1,4 @@
-.board{
+.board-wedget{
     border-radius: 15px;
     background-color: lightyellow;
     margin: 10px auto;
@@ -8,11 +8,11 @@
     position: relative;
 }
 
-.board-header{
+.board-wedget-header{
     position:relative
 }
 
-.board-body{
+.board-wedget-body{
     overflow: scroll;
     height: 90%;
     padding:10px;
