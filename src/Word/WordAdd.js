@@ -56,7 +56,7 @@ export default class WordAdd extends React.Component{
                     </div>
                 </div>
                 <div className="form-group row">
-                    <label htmlFor="wordTranslation" className="col-sm-2 col-form-label">Content</label>
+                    <label htmlFor="wordTranslation" className="col-sm-2 col-form-label">Translation</label>
                     <div className="col-sm-10">
                     <input 
                     type='text' 
