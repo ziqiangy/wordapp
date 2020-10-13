@@ -1,7 +1,4 @@
 import React from 'react';
-// export default function WordEdit(){
-//     return(<div>hello wordEdit</div>)
-// }
 export default class WordEdit extends React.Component{
     constructor(props){
         super(props)
@@ -35,7 +32,7 @@ export default class WordEdit extends React.Component{
           redirect: 'follow'
         };
         
-        fetch("http://localhost/myhomeapp/php/words/searchWords.php?=", requestOptions)
+        fetch("http://peteryuanmac/myhomeapp/php/words/searchWords.php?=", requestOptions)
           .then(response => response.json())
           .then(result => {
             //   console.log(result)
@@ -74,7 +71,7 @@ export default class WordEdit extends React.Component{
           // mode: 'no-cors'
         };
         
-        fetch("http://localhost/myhomeapp/php/words/updateWords.php", requestOptions)
+        fetch("http://peteryuanmac/myhomeapp/php/words/updateWords.php", requestOptions)
           .then(response => response.json())
           .then(result => console.log(result))
           .catch(error => console.log('error', error))
@@ -102,7 +99,7 @@ export default class WordEdit extends React.Component{
           redirect: 'follow'
         };
         
-        fetch("http://localhost/myhomeapp/php/words/deleteWords.php", requestOptions)
+        fetch("http://peteryuanmac/myhomeapp/php/words/deleteWords.php", requestOptions)
           .then(response => response.json())
           .then(result => console.log(result))
           .catch(error => console.log('error', error))
@@ -115,27 +112,39 @@ export default class WordEdit extends React.Component{
 
     render(){
         return(
-            <div>
-                <form onSubmit={this.handleSubmit} >
+          
+              <form onSubmit={this.handleSubmit}>
+                <div className="form-group row">
+                    <label htmlFor="vocab" className="col-sm-2 col-form-label">Vocab</label>
+                    <div className="col-sm-10">
                     <input 
                     type='text' 
+                    className="form-control"
+                    id='vocab'
                     name='vocab' 
                     value={this.state.vocab}
-                    onChange={this.handleInputChange}
+                    onChange={this.handleInputChange} 
                     />
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <label htmlFor="translation" className="col-sm-2 col-form-label">Content</label>
+                    <div className="col-sm-10">
                     <input 
                     type='text' 
+                    className="form-control"
+                    id='translation'
                     name='translation' 
                     value={this.state.translation}
                     onChange={this.handleInputChange}
                     />
-                    <input 
-                    type='submit' 
-                    value='update' 
-                    />        
-                </form>
-                <button onClick={(e)=>this.handleDelete(this.state.id,e)} >Delete</button>
-            </div>
+                    </div>
+                </div>
+                <input type="submit" className="btn btn-outline-dark mb-2" value="update" />
+                <button className="btn btn-outline-dark mb-2 ml-2" onClick={(e)=>this.handleDelete(this.state.id,e)} >Delete</button>
+            </form>
+                
+                
             
         )
     }

@@ -1,4 +1,5 @@
 import React from 'react';
+import editIcon from '../icons/edit-solid.svg';
 export default class WordList extends React.Component{
     componentDidMount(){
         this.props.fetchData();
@@ -16,7 +17,7 @@ export default class WordList extends React.Component{
         })
         return(
             <div>
-                <table>
+                <table className="table table-striped table-hover">
                     <thead>
                     </thead>
                     <tbody>
@@ -33,10 +34,16 @@ class WordRow extends React.Component{
         const word = this.props.word;
         return(
             <tr>
-                <td>{word.vocab}</td>
+                <td onClick={(e)=>this.props.getEditId(word.id,e)} >
+                    <button 
+                    type="button" 
+                    class="btn btn-link">
+                        {word.vocab}
+                        </button>
+                </td>
                 <td>{word.translation}</td>
                 <td>
-                    <span onClick={(e)=>this.props.getEditId(word.id,e)} >Edit</span>
+                <span onClick={(e)=>this.props.getEditId(word.id,e)} ><img className = "icon-button" src={editIcon} alt="edit_a_note"/></span>
                 </td>
             </tr>
         )

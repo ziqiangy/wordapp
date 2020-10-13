@@ -3,8 +3,8 @@ import './Board.css';
 import WordIcon from './icons/font-solid.svg';
 import NoteIcon from './icons/sticky-note-regular.svg';
 import WeatherIcon from './icons/cloud-solid.svg';
-import WordList from './WordList';
 import Note from './Note/Note';
+import Word from './Word/Word';
 import PublicAPIGroup from './PublicAPI/PublicAPIGroup';
 
 export default class Board extends React.Component{
@@ -40,7 +40,7 @@ export default class Board extends React.Component{
                     <div><img onClick={this.handlePublicAPIOpen} className="board-header-img-icon" src={WeatherIcon} alt="show_or_hide_weather_or_PublicAPI" /></div>
                 </div>
                 <div className="board-body">
-                    {this.state.wordOpen? <WordList />:<div/>}
+                    {this.state.wordOpen? <Word />:<div/>}
                     {this.state.noteOpen? <Note />:<div/>}
                     {this.state.weatherOpen? <PublicAPIGroup />:<div/>}
                 </div>

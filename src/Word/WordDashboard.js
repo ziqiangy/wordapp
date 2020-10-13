@@ -1,4 +1,5 @@
 import React from 'react';
+import './WordDashboard.css';
 import leftArrow from '../icons/arrow-circle-left-solid.svg';
 import rightArrow from '../icons/arrow-circle-right-solid.svg';
 import openedEye from '../icons/eye-regular.svg';
@@ -49,7 +50,7 @@ export default class WordDashboard extends React.Component {
             redirect: 'follow'
         }
 
-        fetch("http://peteryuanmac/myhomeapp/php/vocab.php", options)
+        fetch("http://peteryuanmac/myhomeapp/php/words/fetchOneWord.php", options)
         .then(response => response.json())
         .then(result => {
             const vocab = result[0];

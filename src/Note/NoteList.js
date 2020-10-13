@@ -7,9 +7,6 @@ export default class NoteList extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            // header: ['Title', 'Content', 'Insert Date'],
-            header: ['Title', 'Insert Date'],
-            // index: ['title','content','insert_date'],
             index: ['title', 'insert_date'],
             showEdit: false,
             editId: ''
@@ -49,31 +46,28 @@ export default class NoteList extends React.Component{
                 <div className="board-wedget">
                     <div className="board-wedget-header">
                         <div onClick={this.props.handleAdd}><img className = "icon-button" src={addIcon} alt="Add_a_note"/></div>
-                        {/* <span onClick={this.props.handleAdd}>Add</span> */}
                     </div>
                     <div className ="board-wedget-body">
                     <table className="table table-striped table-hover">
                         <thead>
                         <tr>
-                            {this.state.header.map((ans,i)=>
-                                <th scope="col" key={i.toString()}>{ans}</th>
-                            )}
-                            <th scope="col">Action</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Insert Date</th>
                         </tr>
                         </thead>
                         <tbody>
                         {this.props.tableData.map((row,i)=>{
-                            // console.log(row.id);
                             return(
-                                <tr key={i.toString()}>
-                                    {this.state.index.map((item,i)=>{
-                                        return(
-                                            <td key={i.toString()}>{row[item]}</td>
-                                        )
-                                    })}
-                                    <td key={i.toString()}>
-                                        <span onClick={()=>this.getEditId(row['id'])}><img className = "icon-button" src={editIcon} alt="edit_a_note"/></span>
+                                <tr key={i.toString()}>      
+                                    <td onClick={()=>this.getEditId(row['id'])} >
+                                        <button 
+                                        type="button"
+                                        class="btn btn-link">
+                                            {row.title}
+                                            </button>
                                     </td>
+                                    <td>{row.insert_date}</td>
+                                    
                                 </tr>
                             )
                         })}

@@ -143,9 +143,9 @@ export default class NoteEdit extends React.Component{
                             </div>
                         </div>
                         <input type="submit" className="btn btn-outline-dark mb-2" value="Update" />
-                        
+                        <button className="btn btn-outline-dark mb-2 ml-2" onClick={()=>this.handleDelete(this.state.noteId)}>Delete</button>
                     </form>
-                    <button className="btn btn-outline-dark mb-2 ml-2" onClick={()=>this.handleDelete(this.state.noteId)}>Delete</button>
+                    
                 </div>
             </div>
         )

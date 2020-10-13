@@ -1,6 +1,6 @@
 <?php
-include('config.php');
-include('DB.php');
+include('../config.php');
+include('../DB.php');
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 // $sql = "SELECT * FROM `vocab` LIMIT 1 OFFSET 1";

@@ -42,22 +42,33 @@ export default class WordAdd extends React.Component{
     render(){
         return(
             <form onSubmit={this.handleSubmit}>
-                <input 
-                type='text' 
-                name='wordTitle' 
-                value={this.state.wordTitle}
-                onChange={this.handleInputChange} 
-                />
-                <input 
-                type='text' 
-                name='wordTranslation' 
-                value={this.state.wordTranslation}
-                onChange={this.handleInputChange} 
-                />
-                <input 
-                type='submit' 
-                value='add' 
-                />        
+                <div className="form-group row">
+                    <label htmlFor="wordTitle" className="col-sm-2 col-form-label">Vocab</label>
+                    <div className="col-sm-10">
+                    <input 
+                    type='text' 
+                    className="form-control"
+                    id='wordTitle'
+                    name='wordTitle' 
+                    value={this.state.wordTitle}
+                    onChange={this.handleInputChange} 
+                    />
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <label htmlFor="wordTranslation" className="col-sm-2 col-form-label">Content</label>
+                    <div className="col-sm-10">
+                    <input 
+                    type='text' 
+                    className="form-control"
+                    id='wordTranslation'
+                    name='wordTranslation' 
+                    value={this.state.wordTranslation}
+                    onChange={this.handleInputChange} 
+                    />
+                    </div>
+                </div>
+                <input type="submit" className="btn btn-outline-dark mb-2" value="Add" />
             </form>
         )
     }

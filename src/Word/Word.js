@@ -3,14 +3,17 @@ import WordAdd from './WordAdd';
 import WordDashboard from './WordDashboard';
 import WordEdit from './WordEdit';
 import WordList from './WordList';
+import addIcon from '../icons/plus-circle-solid.svg';
+import dashboardIcon from '../icons/chalkboard-solid.svg';
+import listIcon from '../icons/list-alt-regular.svg';
 export default class Word extends React.Component{
     constructor(props){
         super(props)
         this.state = {
             openWordAdd:false,
-            openWordDashboard:false,
+            openWordDashboard:true,
             openWordEdit:false,
-            openWordList:true,
+            openWordList:false,
             editId:'',
             words:[],
         }
@@ -34,7 +37,7 @@ export default class Word extends React.Component{
             redirect: 'follow'
           };
           
-          fetch("http://localhost/myhomeapp/php/words/listWords.php", requestOptions)
+          fetch("http://peteryuanmac/myhomeapp/php/words/listWords.php", requestOptions)
             .then(response => response.json())
             .then(result => {
                 // console.log(result)
@@ -45,15 +48,18 @@ export default class Word extends React.Component{
 
     render(){
         return(
-            <div>
-                <button onClick={(e)=>this.handleOpen('openWordAdd',e)}>+</button>
-                <button onClick={(e)=>this.handleOpen('openWordDashboard',e)}>WordDashboard</button>
-                {/* <button onClick={(e)=>this.handleOpen('openWordEdit',e)}>Edit</button> */}
-                <button onClick={(e)=>this.handleOpen('openWordList',e)}>List</button>
-                {this.state.openWordAdd && <WordAdd />}
-                {this.state.openWordDashboard && <WordDashboard />}
-                {this.state.openWordEdit && <WordEdit editId={this.state.editId} handleOpen = {this.handleOpen} fetchData = {this.fetchData} />}
-                {this.state.openWordList && <WordList getEditId = {this.getEditId} words = {this.state.words} fetchData = {this.fetchData} />}
+            <div className="board-wedget">
+                <div className="board-wedget-header">
+                    <span onClick={(e)=>this.handleOpen('openWordAdd',e)}><img className = "icon-button ml-5" src={addIcon} alt="addIcon"/></span>
+                    <span onClick={(e)=>this.handleOpen('openWordDashboard',e)}><img className = "icon-button ml-5" src={dashboardIcon} alt="dashboardIcon"/></span>
+                    <span onClick={(e)=>this.handleOpen('openWordList',e)}><img className = "icon-button ml-5" src={listIcon} alt="listIcon"/></span>
+                </div>
+                <div className ="board-wedget-body">
+                    {this.state.openWordAdd && <WordAdd />}
+                    {this.state.openWordDashboard && <WordDashboard />}
+                    {this.state.openWordEdit && <WordEdit editId={this.state.editId} handleOpen = {this.handleOpen} fetchData = {this.fetchData} />}
+                    {this.state.openWordList && <WordList getEditId = {this.getEditId} words = {this.state.words} fetchData = {this.fetchData} />}
+                </div>
             </div>
             
         )
