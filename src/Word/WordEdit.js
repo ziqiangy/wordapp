@@ -70,13 +70,21 @@ export default class WordEdit extends React.Component{
           method: 'POST',
           headers: myHeaders,
           body: urlencoded,
-          redirect: 'follow'
+          redirect: 'follow',
+          // mode: 'no-cors'
         };
         
         fetch("http://localhost/myhomeapp/php/words/updateWords.php", requestOptions)
           .then(response => response.json())
           .then(result => console.log(result))
-          .catch(error => console.log('error', error));
+          .catch(error => console.log('error', error))
+          .then(()=>{
+            this.props.fetchData();
+            this.props.handleOpen('openWordList')
+        });
+
+          
+          
 
     }
 
@@ -97,7 +105,12 @@ export default class WordEdit extends React.Component{
         fetch("http://localhost/myhomeapp/php/words/deleteWords.php", requestOptions)
           .then(response => response.json())
           .then(result => console.log(result))
-          .catch(error => console.log('error', error));
+          .catch(error => console.log('error', error))
+          .then(()=>{
+            this.props.fetchData();
+            this.props.handleOpen('openWordList')
+        });
+          
     }
 
     render(){

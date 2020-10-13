@@ -1,34 +1,11 @@
 import React from 'react';
 export default class WordList extends React.Component{
-    constructor(props){
-        super(props)
-        this.state = {
-            words:[],
-        }
-        this.fetchData = this.fetchData.bind(this);
-    }
     componentDidMount(){
-        this.fetchData()
+        this.props.fetchData();
     }
-
-    fetchData(){
-        var requestOptions = {
-            method: 'GET',
-            redirect: 'follow'
-          };
-          
-          fetch("http://localhost/myhomeapp/php/words/listWords.php", requestOptions)
-            .then(response => response.json())
-            .then(result => {
-                // console.log(result)
-                this.setState({words:result})
-            })
-            .catch(error => console.log('error', error));
-    }
-
     render(){
         const rows = []
-        this.state.words.map((word)=>{
+        this.props.words.map((word)=>{
             rows.push(
                 <WordRow
                 word={word}
