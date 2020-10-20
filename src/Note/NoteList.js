@@ -1,7 +1,7 @@
 import React from 'react';
 import NoteEdit from './NoteEdit';
 import addIcon from '../icons/plus-circle-solid.svg';
-import editIcon from '../icons/edit-solid.svg';
+// import editIcon from '../icons/edit-solid.svg';
 export default class NoteList extends React.Component{
 
     constructor(props){
@@ -62,7 +62,7 @@ export default class NoteList extends React.Component{
                                     <td onClick={()=>this.getEditId(row['id'])} >
                                         <button 
                                         type="button"
-                                        class="btn btn-link">
+                                        className="btn btn-link">
                                             {row.title}
                                             </button>
                                     </td>

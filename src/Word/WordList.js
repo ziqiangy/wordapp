@@ -14,6 +14,7 @@ export default class WordList extends React.Component{
                 getEditId={this.props.getEditId}
                 />
             )
+            return rows;
         })
         return(
             <div>
@@ -37,7 +38,7 @@ class WordRow extends React.Component{
                 <td onClick={(e)=>this.props.getEditId(word.id,e)} >
                     <button 
                     type="button" 
-                    class="btn btn-link">
+                    className="btn btn-link">
                         {word.vocab}
                         </button>
                 </td>

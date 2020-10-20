@@ -16,6 +16,7 @@
     left:50%;
     margin-right: -50%;
     transform: translate(-50%,-50%);
+    overflow:auto;
 }
 .vocab{
     font-size: 30px;
@@ -26,30 +27,26 @@
 }
 
 .word-header{
-    position:relative
+    position:relative;
+    /* height:27px; */
 }
 
-.last-page-button{
-    position: absolute;
-    top:0;
-    left:25%;
+
+.last-page-button,
+.next-page-button,
+.show-hide-button,
+.vocab-link,
+.crawler-paw-button{
+    display: inline-block;
+    margin-left:80px;
 }
 
-.next-page-button{
-    position: absolute;
-    top:0;
-    right:25%;
+.word-card-father{
+    position:relative;
+    height: 300px;
+    
+}
+.word-card-footer{
+    position:relative;
 }
 
-.show-hide-button{
-    position:absolute;
-    top:0;
-    left:50%;
-    transform: translate(-50%,0);
-}
-
-.vocab-link{
-    position: absolute;
-    top:0;
-    right:0;
-}
