@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/myhomeapp/build/static/css/main.30f389aa.chunk.css",
+    "main.js": "/myhomeapp/build/static/js/main.8883240d.chunk.js",
+    "main.js.map": "/myhomeapp/build/static/js/main.8883240d.chunk.js.map",
+    "runtime-main.js": "/myhomeapp/build/static/js/runtime-main.af4897ab.js",
+    "runtime-main.js.map": "/myhomeapp/build/static/js/runtime-main.af4897ab.js.map",
+    "static/js/2.86df383a.chunk.js": "/myhomeapp/build/static/js/2.86df383a.chunk.js",
+    "static/js/2.86df383a.chunk.js.map": "/myhomeapp/build/static/js/2.86df383a.chunk.js.map",
+    "index.html": "/myhomeapp/build/index.html",
+    "precache-manifest.1b9cf676c47388eb21b9bfe553aa8894.js": "/myhomeapp/build/precache-manifest.1b9cf676c47388eb21b9bfe553aa8894.js",
+    "service-worker.js": "/myhomeapp/build/service-worker.js",
+    "static/css/main.30f389aa.chunk.css.map": "/myhomeapp/build/static/css/main.30f389aa.chunk.css.map",
+    "static/js/2.86df383a.chunk.js.LICENSE.txt": "/myhomeapp/build/static/js/2.86df383a.chunk.js.LICENSE.txt",
+    "static/media/arrow-circle-left-solid.svg": "/myhomeapp/build/static/media/arrow-circle-left-solid.22995d31.svg",
+    "static/media/arrow-circle-right-solid.svg": "/myhomeapp/build/static/media/arrow-circle-right-solid.e7f07410.svg",
+    "static/media/chalkboard-solid.svg": "/myhomeapp/build/static/media/chalkboard-solid.f6ffb171.svg",
+    "static/media/cloud-solid.svg": "/myhomeapp/build/static/media/cloud-solid.3052c53b.svg",
+    "static/media/edit-solid.svg": "/myhomeapp/build/static/media/edit-solid.9a4d5fd5.svg",
+    "static/media/external-link-alt-solid.svg": "/myhomeapp/build/static/media/external-link-alt-solid.03979156.svg",
+    "static/media/eye-regular.svg": "/myhomeapp/build/static/media/eye-regular.35985bde.svg",
+    "static/media/eye-slash-regular.svg": "/myhomeapp/build/static/media/eye-slash-regular.b4eb391d.svg",
+    "static/media/font-solid.svg": "/myhomeapp/build/static/media/font-solid.5a0a0658.svg",
+    "static/media/list-alt-regular.svg": "/myhomeapp/build/static/media/list-alt-regular.1f44e83c.svg",
+    "static/media/plus-circle-solid.svg": "/myhomeapp/build/static/media/plus-circle-solid.2de4ac5c.svg",
+    "static/media/sticky-note-regular.svg": "/myhomeapp/build/static/media/sticky-note-regular.59f2e752.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.af4897ab.js",
+    "static/js/2.86df383a.chunk.js",
+    "static/css/main.30f389aa.chunk.css",
+    "static/js/main.8883240d.chunk.js"
+  ]
+}
