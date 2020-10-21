@@ -70,7 +70,7 @@ export default class WordDashboard extends React.Component {
 
         var config = {
           method: 'get',
-          url: 'http://flaskapp/crawler/'+this.state.vocab.vocab,
+          url: 'http://peteryuanmac:8081/crawler/'+this.state.vocab.vocab,
         //   headers: {"Access-Control-Allow-Origin": "*"}
         };
         
