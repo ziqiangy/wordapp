@@ -56,7 +56,7 @@ export default class NoteAdd extends React.Component{
         return(
             <div className="board-wedget">
                 <div className="board-wedget-header">
-                <div onClick={this.props.handler}><img className = "icon-button" src={goBackIcon} alt="Note_Go_Back_Icon"/></div>
+                <img onClick={this.props.handler} className = "icon-button" src={goBackIcon} alt="Note_Go_Back_Icon"/>
                 </div>
                 <div className ="board-wedget-body">
                     <form onSubmit={this.handleSubmit}>

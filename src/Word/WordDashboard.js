@@ -76,7 +76,7 @@ export default class WordDashboard extends React.Component {
         
         axios(config)
         .then(response => {
-          console.log(response.data);
+        //   console.log(response.data);
           this.setState({VocabCraw:response.data})
         })
         .catch(function (error) {

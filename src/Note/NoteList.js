@@ -45,7 +45,7 @@ export default class NoteList extends React.Component{
             return(
                 <div className="board-wedget">
                     <div className="board-wedget-header">
-                        <div onClick={this.props.handleAdd}><img className = "icon-button" src={addIcon} alt="Add_a_note"/></div>
+                        <img onClick={this.props.handleAdd} className = "icon-button" src={addIcon} alt="Add_a_note"/>
                     </div>
                     <div className ="board-wedget-body">
                     <table className="table table-striped table-hover">
