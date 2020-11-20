@@ -23,6 +23,7 @@ export default class WordDashboard extends React.Component {
         }
     }
     componentDidMount(){
+        console.log(this.props.serverData)
         this.fetchWord(0)
     }
     fetchNext(){
@@ -55,7 +56,7 @@ export default class WordDashboard extends React.Component {
             redirect: 'follow'
         }
 
-        fetch("http://peteryuanmac/myhomeapp/php/words/fetchOneWord.php", options)
+        fetch(this.props.serverData.phpApiUrl+"words/fetchOneWord.php", options)
         .then(response => response.json())
         .then(result => {
             const vocab = result[0];

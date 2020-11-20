@@ -40,7 +40,7 @@ export default class NoteList extends React.Component{
 
     render(){
         if(this.state.showEdit){
-            return(<NoteEdit closeEdit = {this.closeEdit} editId = {this.state.editId} fetchData = {this.props.fetchData} />)
+            return(<NoteEdit closeEdit = {this.closeEdit} editId = {this.state.editId} fetchData = {this.props.fetchData} serverData={this.props.serverData} />)
         }else{
             return(
                 <div className="board-wedget">

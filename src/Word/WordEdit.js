@@ -32,7 +32,7 @@ export default class WordEdit extends React.Component{
           redirect: 'follow'
         };
         
-        fetch("http://peteryuanmac/myhomeapp/php/words/searchWords.php?=", requestOptions)
+        fetch(this.props.serverData.phpApiUrl+"words/searchWords.php?=", requestOptions)
           .then(response => response.json())
           .then(result => {
             //   console.log(result)
@@ -71,7 +71,7 @@ export default class WordEdit extends React.Component{
           // mode: 'no-cors'
         };
         
-        fetch("http://peteryuanmac/myhomeapp/php/words/updateWords.php", requestOptions)
+        fetch(this.props.serverData.phpApiUrl+"words/updateWords.php", requestOptions)
           .then(response => response.json())
           .then(result => console.log(result))
           .catch(error => console.log('error', error))
@@ -99,7 +99,7 @@ export default class WordEdit extends React.Component{
           redirect: 'follow'
         };
         
-        fetch("http://peteryuanmac/myhomeapp/php/words/deleteWords.php", requestOptions)
+        fetch(this.props.serverData.phpApiUrl+"words/deleteWords.php", requestOptions)
           .then(response => response.json())
           .then(result => console.log(result))
           .catch(error => console.log('error', error))

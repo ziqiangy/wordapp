@@ -45,7 +45,7 @@ export default class WordAdd extends React.Component{
         // mode: 'no-cors'
         };
 
-        fetch("http://peteryuanmac/myhomeapp/php/words/addWords.php", requestOptions)
+        fetch(this.props.serverData.phpApiUrl+"words/addWords.php", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error))
@@ -63,7 +63,7 @@ export default class WordAdd extends React.Component{
         this.setState({[e.target.name]:e.target.value})
     }
     fetchVocabSource(){
-        fetch("http://peteryuanmac/myhomeapp/php/vocab_source/listVocabSource.php")
+        fetch(this.props.serverData.phpApiUrl+"vocab_source/listVocabSource.php")
         .then(response=>response.json())
         .then(result=>{
             // console.log(result)

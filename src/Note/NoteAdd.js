@@ -40,7 +40,7 @@ export default class NoteAdd extends React.Component{
         redirect: 'follow'
         };
 
-        fetch("http://peteryuanmac/myhomeapp/php/notes/addNotes.php", requestOptions)
+        fetch(this.props.serverData.phpApiUrl+"notes/addNotes.php", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error))

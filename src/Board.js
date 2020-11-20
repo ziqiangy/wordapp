@@ -40,8 +40,8 @@ export default class Board extends React.Component{
                     <div><img onClick={this.handlePublicAPIOpen} className="board-header-img-icon" src={WeatherIcon} alt="show_or_hide_weather_or_PublicAPI" /></div>
                 </div>
                 <div className="board-body">
-                    {this.state.wordOpen? <Word />:<div/>}
-                    {this.state.noteOpen? <Note />:<div/>}
+                    {this.state.wordOpen? <Word serverData={this.props.serverData} />:<div/>}
+                    {this.state.noteOpen? <Note serverData={this.props.serverData} />:<div/>}
                     {this.state.weatherOpen? <PublicAPIGroup />:<div/>}
                 </div>
             </div>

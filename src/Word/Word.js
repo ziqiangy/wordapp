@@ -23,6 +23,7 @@ export default class Word extends React.Component{
     }
     componentDidMount(){
         this.fetchData()
+        console.log(this.props.serverData)
     }
     handleOpen(data){
         this.setState({openWordAdd:false,openWordDashboard:false,openWordEdit:false,openWordList:false})
@@ -37,7 +38,7 @@ export default class Word extends React.Component{
             redirect: 'follow'
           };
           
-          fetch("http://peteryuanmac/myhomeapp/php/words/listWords.php", requestOptions)
+          fetch(this.props.serverData.phpApiUrl+"words/listWords.php", requestOptions)
             .then(response => response.json())
             .then(result => {
                 // console.log(result)
@@ -55,10 +56,10 @@ export default class Word extends React.Component{
                     <span onClick={(e)=>this.handleOpen('openWordList',e)}><img className = "icon-button ml-5" src={listIcon} alt="listIcon"/></span>
                 </div>
                 <div className ="board-wedget-body">
-                    {this.state.openWordAdd && <WordAdd />}
-                    {this.state.openWordDashboard && <WordDashboard />}
-                    {this.state.openWordEdit && <WordEdit editId={this.state.editId} handleOpen = {this.handleOpen} fetchData = {this.fetchData} />}
-                    {this.state.openWordList && <WordList getEditId = {this.getEditId} words = {this.state.words} fetchData = {this.fetchData} />}
+                    {this.state.openWordAdd && <WordAdd serverData={this.props.serverData} />}
+                    {this.state.openWordDashboard && <WordDashboard serverData={this.props.serverData} />}
+                    {this.state.openWordEdit && <WordEdit editId={this.state.editId} handleOpen = {this.handleOpen} fetchData = {this.fetchData} serverData={this.props.serverData} />}
+                    {this.state.openWordList && <WordList getEditId = {this.getEditId} words = {this.state.words} fetchData = {this.fetchData} serverData={this.props.serverData} />}
                 </div>
             </div>
             

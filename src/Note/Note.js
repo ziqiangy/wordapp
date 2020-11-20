@@ -22,7 +22,7 @@ export default class Note extends React.Component{
             redirect: 'follow'
           };
           
-          fetch("http://peteryuanmac/myhomeapp/php/notes/NoteList.php", requestOptions)
+          fetch(this.props.serverData.phpApiUrl+"notes/NoteList.php", requestOptions)
             .then(response => response.json())
             .then(result => {
                 // console.log(result)
@@ -43,9 +43,9 @@ export default class Note extends React.Component{
     
     render(){
         if(this.state.showAdd){
-            return(<NoteAdd handler = {this.closeAdd} fetchData = {this.fetchData} />);
+            return(<NoteAdd handler = {this.closeAdd} fetchData = {this.fetchData} serverData={this.props.serverData} />);
         }else{
-            return(<NoteList handleAdd={this.openAdd} fetchData ={this.fetchData} tableData={this.state.tableData} />);
+            return(<NoteList handleAdd={this.openAdd} fetchData ={this.fetchData} tableData={this.state.tableData} serverData={this.props.serverData} />);
         }
 
     }
