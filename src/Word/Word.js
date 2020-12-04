@@ -23,7 +23,7 @@ export default class Word extends React.Component{
     }
     componentDidMount(){
         this.fetchData()
-        console.log(this.props.serverData)
+        // console.log(this.props.serverData)
     }
     handleOpen(data){
         this.setState({openWordAdd:false,openWordDashboard:false,openWordEdit:false,openWordList:false})

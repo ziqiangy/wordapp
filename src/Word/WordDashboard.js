@@ -23,7 +23,7 @@ export default class WordDashboard extends React.Component {
         }
     }
     componentDidMount(){
-        console.log(this.props.serverData)
+        // console.log(this.props.serverData)
         this.fetchWord(0)
     }
     fetchNext(){

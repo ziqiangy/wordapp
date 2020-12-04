@@ -19,7 +19,7 @@ export default class Weather extends React.Component{
             redirect: 'follow'
           };
           
-          fetch("https://api.weatherbit.io/v2.0/forecast/daily?city=Provo,UT&country=US&key=72761be16d86427e9f4cee1e8c5e5d43", requestOptions)
+          fetch("https://api.weatherbit.io/v2.0/forecast/daily?city=Provo,UT&country=US&key=a742cbfc706b4a9eb40fe417acc4543e", requestOptions)
             .then(response => response.json())
             .then(result => {
                 // console.log(result)
