@@ -39,7 +39,7 @@ export default class AppHeader extends React.Component{
                         {this.state.headerWeather.data[0].city_name}, 
                         {this.state.headerWeather.data[0].state_code} | 
                         {this.state.headerWeather.data[0].temp}°C 
-                        <img src={"https://www.weatherbit.io/static/img/icons/"+this.state.headerWeather.data[0].weather.icon+".png"} alt="show_weather_icon" /> | 
+                        <img style={{height: "2em"}} src={"https://www.weatherbit.io/static/img/icons/"+this.state.headerWeather.data[0].weather.icon+".png"} alt="show_weather_icon" /> | 
                         {this.state.headerWeather.data[0].aqi}</div>
                 </div>
             )
