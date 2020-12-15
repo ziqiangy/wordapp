@@ -5,9 +5,7 @@ export default class NoteAdd extends React.Component{
         super(props);
         this.state = {
             noteTitle: '',
-            noteContent: '',
-            noteDate: '',
-            currentTime: new Date()
+            noteContent: ''
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,7 +29,7 @@ export default class NoteAdd extends React.Component{
         var urlencoded = new URLSearchParams();
         urlencoded.append("title", this.state.noteTitle);
         urlencoded.append("content", this.state.noteContent);
-        urlencoded.append("date", this.state.noteDate);
+        urlencoded.append("user_id", "1");
 
         var requestOptions = {
         method: 'POST',
@@ -40,13 +38,13 @@ export default class NoteAdd extends React.Component{
         redirect: 'follow'
         };
 
-        fetch(this.props.serverData.phpApiUrl+"notes/addNotes.php", requestOptions)
+        fetch(this.props.serverData.localDjRest+"notes/", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error))
         .then(()=>{
             this.props.handler();
-        this.props.fetchData();
+            this.props.fetchData();
         });
 
         

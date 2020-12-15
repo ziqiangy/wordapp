@@ -20,20 +20,20 @@ export default class NoteEdit extends React.Component{
 
     handleEdit(id){
 
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+        // var myHeaders = new Headers();
+        // myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
-        var urlencoded = new URLSearchParams();
-        urlencoded.append("id", id);
+        // var urlencoded = new URLSearchParams();
+        // urlencoded.append("id", id);
 
         var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: urlencoded,
+        method: 'GET',
+        // headers: myHeaders,
+        // body: urlencoded,
         redirect: 'follow'
         };
 
-        fetch(this.props.serverData.phpApiUrl+"notes/searchNotes.php", requestOptions)
+        fetch(this.props.serverData.localDjRest+"notes/"+id, requestOptions)
         .then(response => response.json())
         .then(result => {
             this.setState({
@@ -61,18 +61,19 @@ export default class NoteEdit extends React.Component{
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
         var urlencoded = new URLSearchParams();
-        urlencoded.append("id", this.state.noteId);
         urlencoded.append("title", this.state.noteTitle);
         urlencoded.append("content", this.state.noteContent);
+        urlencoded.append("user_id", "1");
+
 
         var requestOptions = {
-        method: 'POST',
+        method: 'PUT',
         headers: myHeaders,
         body: urlencoded,
         redirect: 'follow'
         };
 
-        fetch(this.props.serverData.phpApiUrl+"notes/updateNotes.php", requestOptions)
+        fetch(this.props.serverData.localDjRest+"notes/"+this.state.noteId+"/", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error))
@@ -91,13 +92,13 @@ export default class NoteEdit extends React.Component{
         urlencoded.append("id", id);
 
         var requestOptions = {
-        method: 'POST',
+        method: 'DELETE',
         headers: myHeaders,
         body: urlencoded,
         redirect: 'follow'
         };
 
-        fetch(this.props.serverData.phpApiUrl+"notes/deleteNotes.php", requestOptions)
+        fetch(this.props.serverData.localDjRest+"notes/"+id+"/", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error))
@@ -143,9 +144,9 @@ export default class NoteEdit extends React.Component{
                             </div>
                         </div>
                         <input type="submit" className="btn btn-outline-dark mb-2" value="Update" />
-                        <button className="btn btn-outline-dark mb-2 ml-2" onClick={()=>this.handleDelete(this.state.noteId)}>Delete</button>
+                        <button type="button" className="btn btn-outline-dark mb-2 ml-2" onClick={()=>this.handleDelete(this.state.noteId)}>Delete</button>
                     </form>
-                    
+
                 </div>
             </div>
         )

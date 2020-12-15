@@ -12,6 +12,7 @@ export default class App extends React.Component{
         serverName:'localhost',
         phpApiUrl:'http://45.33.26.166/home/phpwordapi/',
         phpLocalUrl:'http://peteryuanmac/myhomeapp/',
+        localDjRest:'http://127.0.0.1:8000/api/'
       }
     }
   }

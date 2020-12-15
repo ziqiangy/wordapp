@@ -18,11 +18,11 @@ export default class Note extends React.Component{
 
     fetchData = () => {
         var requestOptions = {
-            method: 'POST',
+            method: 'GET',
             redirect: 'follow'
           };
           
-          fetch(this.props.serverData.phpApiUrl+"notes/NoteList.php", requestOptions)
+          fetch(this.props.serverData.localDjRest+"notes/", requestOptions)
             .then(response => response.json())
             .then(result => {
                 // console.log(result)
