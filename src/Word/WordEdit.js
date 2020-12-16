@@ -4,8 +4,10 @@ export default class WordEdit extends React.Component{
         super(props)
         this.state={
             id: '',
-            vocab: '',
-            translation: '',
+            word: '',
+            trans: '',
+            user_id: '',
+            source_id: ''
 
         }
         this.fetchWord = this.fetchWord.bind(this);
@@ -19,27 +21,23 @@ export default class WordEdit extends React.Component{
     }
 
     fetchWord(id){
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-        
-        var urlencoded = new URLSearchParams();
-        urlencoded.append("id", id);
         
         var requestOptions = {
-          method: 'POST',
-          headers: myHeaders,
-          body: urlencoded,
+          method: 'GET',
+          
           redirect: 'follow'
         };
         
-        fetch(this.props.serverData.phpApiUrl+"words/searchWords.php?=", requestOptions)
+        fetch(this.props.serverData.localDjRest+"words/"+id, requestOptions)
           .then(response => response.json())
           .then(result => {
             //   console.log(result)
               this.setState({
                   id:result.id,
-                  vocab:result.vocab,
-                  translation:result.translation
+                  word:result.word,
+                  trans:result.trans,
+                  user_id: result.user_id,
+                  source_id: result.source_id
                 })
             })
           .catch(error => console.log('error', error));
@@ -60,18 +58,20 @@ export default class WordEdit extends React.Component{
         
         var urlencoded = new URLSearchParams();
         urlencoded.append("id", this.state.id);
-        urlencoded.append("vocab", this.state.vocab);
-        urlencoded.append("translation", this.state.translation);
+        urlencoded.append("word", this.state.word);
+        urlencoded.append("trans", this.state.trans);
+        urlencoded.append("user_id", this.state.user_id);
+        urlencoded.append("source_id", this.state.source_id);
+
         
         var requestOptions = {
-          method: 'POST',
+          method: 'PUT',
           headers: myHeaders,
           body: urlencoded,
           redirect: 'follow',
-          // mode: 'no-cors'
         };
         
-        fetch(this.props.serverData.phpApiUrl+"words/updateWords.php", requestOptions)
+        fetch(this.props.serverData.localDjRest+"words/"+this.state.id+"/", requestOptions)
           .then(response => response.json())
           .then(result => console.log(result))
           .catch(error => console.log('error', error))
@@ -93,14 +93,14 @@ export default class WordEdit extends React.Component{
         urlencoded.append("id", id);
         
         var requestOptions = {
-          method: 'POST',
+          method: 'DELETE',
           headers: myHeaders,
           body: urlencoded,
           redirect: 'follow'
         };
         
-        fetch(this.props.serverData.phpApiUrl+"words/deleteWords.php", requestOptions)
-          .then(response => response.json())
+        fetch(this.props.serverData.localDjRest+"words/"+id+"/", requestOptions)
+          .then(response => response.text())
           .then(result => console.log(result))
           .catch(error => console.log('error', error))
           .then(()=>{
@@ -115,33 +115,33 @@ export default class WordEdit extends React.Component{
           
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group row">
-                    <label htmlFor="vocab" className="col-sm-2 col-form-label">Vocab</label>
+                    <label htmlFor="word" className="col-sm-2 col-form-label">Word</label>
                     <div className="col-sm-10">
                     <input 
                     type='text' 
                     className="form-control"
-                    id='vocab'
-                    name='vocab' 
-                    value={this.state.vocab}
+                    id='word'
+                    name='word' 
+                    value={this.state.word}
                     onChange={this.handleInputChange} 
                     />
                     </div>
                 </div>
                 <div className="form-group row">
-                    <label htmlFor="translation" className="col-sm-2 col-form-label">Translation</label>
+                    <label htmlFor="trans" className="col-sm-2 col-form-label">Translation</label>
                     <div className="col-sm-10">
                     <input 
                     type='text' 
                     className="form-control"
-                    id='translation'
-                    name='translation' 
-                    value={this.state.translation}
+                    id='trans'
+                    name='trans' 
+                    value={this.state.trans}
                     onChange={this.handleInputChange}
                     />
                     </div>
                 </div>
                 <input type="submit" className="btn btn-outline-dark mb-2" value="update" />
-                <button className="btn btn-outline-dark mb-2 ml-2" onClick={(e)=>this.handleDelete(this.state.id,e)} >Delete</button>
+                <button type="button" className="btn btn-outline-dark mb-2 ml-2" onClick={(e)=>this.handleDelete(this.state.id,e)} >Delete</button>
             </form>
                 
                 

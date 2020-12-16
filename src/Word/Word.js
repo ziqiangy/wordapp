@@ -23,7 +23,7 @@ export default class Word extends React.Component{
     }
     componentDidMount(){
         this.fetchData()
-        // console.log(this.props.serverData)
+        // console.log(this.state.words)
     }
     handleOpen(data){
         this.setState({openWordAdd:false,openWordDashboard:false,openWordEdit:false,openWordList:false})
@@ -38,7 +38,7 @@ export default class Word extends React.Component{
             redirect: 'follow'
           };
           
-          fetch(this.props.serverData.phpApiUrl+"words/listWords.php", requestOptions)
+          fetch(this.props.serverData.localDjRest+"words/", requestOptions)
             .then(response => response.json())
             .then(result => {
                 // console.log(result)
@@ -57,7 +57,7 @@ export default class Word extends React.Component{
                 </div>
                 <div className ="board-wedget-body">
                     {this.state.openWordAdd && <WordAdd serverData={this.props.serverData} />}
-                    {this.state.openWordDashboard && <WordDashboard serverData={this.props.serverData} />}
+                    {this.state.openWordDashboard && <WordDashboard serverData={this.props.serverData} words = {this.state.words} fetchData = {this.fetchData} />}
                     {this.state.openWordEdit && <WordEdit editId={this.state.editId} handleOpen = {this.handleOpen} fetchData = {this.fetchData} serverData={this.props.serverData} />}
                     {this.state.openWordList && <WordList getEditId = {this.getEditId} words = {this.state.words} fetchData = {this.fetchData} serverData={this.props.serverData} />}
                 </div>

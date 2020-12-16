@@ -39,10 +39,10 @@ class WordRow extends React.Component{
                     <button 
                     type="button" 
                     className="btn btn-link">
-                        {word.vocab}
+                        {word.word}
                         </button>
                 </td>
-                <td>{word.translation}</td>
+                <td>{word.trans}</td>
                 <td>
                 <span onClick={(e)=>this.props.getEditId(word.id,e)} ><img className = "icon-button" src={editIcon} alt="edit_a_note"/></span>
                 </td>

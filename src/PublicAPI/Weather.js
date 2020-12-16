@@ -10,7 +10,7 @@ export default class Weather extends React.Component{
     }
 
     componentDidMount(){
-        this.catchWeatherData();
+        // this.catchWeatherData();
     }
 
     catchWeatherData(){

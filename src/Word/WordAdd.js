@@ -8,7 +8,7 @@ export default class WordAdd extends React.Component{
         this.state = {
             wordTitle:'',
             wordTranslation:'',
-            wordSource:'0',
+            sourceId:'0',
             vocabSource:[],
             openSourceAdd: false,
         }
@@ -30,22 +30,21 @@ export default class WordAdd extends React.Component{
         e.preventDefault();
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-        // myHeaders.append('Access-Control-Allow-Origin', '*');
 
         var urlencoded = new URLSearchParams();
         urlencoded.append("word", this.state.wordTitle);
-        urlencoded.append("translation", this.state.wordTranslation);
-        urlencoded.append("source", this.state.wordSource);
+        urlencoded.append("trans", this.state.wordTranslation);
+        urlencoded.append("user_id", "1");
+        urlencoded.append("source_id", this.state.sourceId);
 
         var requestOptions = {
         method: 'POST',
         headers: myHeaders,
         body: urlencoded,
         redirect: 'follow',
-        // mode: 'no-cors'
         };
 
-        fetch(this.props.serverData.phpApiUrl+"words/addWords.php", requestOptions)
+        fetch(this.props.serverData.localDjRest+"words/", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error))
@@ -53,7 +52,7 @@ export default class WordAdd extends React.Component{
             this.setState({
                 wordTitle:'',
                 wordTranslation:'',
-                wordSource:'0',
+                sourceId:'0',
             })
         });
 
@@ -63,7 +62,7 @@ export default class WordAdd extends React.Component{
         this.setState({[e.target.name]:e.target.value})
     }
     fetchVocabSource(){
-        fetch(this.props.serverData.phpApiUrl+"vocab_source/listVocabSource.php")
+        fetch(this.props.serverData.localDjRest+"wordsources/")
         .then(response=>response.json())
         .then(result=>{
             // console.log(result)
@@ -127,9 +126,9 @@ export default class WordAdd extends React.Component{
                         <div className="col-sm-10">
                         <select
                         className="form-control"
-                        id="wordSource"
-                        name='wordSource'
-                        value={this.state.wordSource}
+                        id="sourceid"
+                        name='sourceId'
+                        value={this.state.sourceId}
                         onChange={this.handleInputChange} 
                         >
                             {sourceOptions}

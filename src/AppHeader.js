@@ -10,7 +10,7 @@ export default class AppHeader extends React.Component{
     }
 
     componentDidMount(){
-        this.fetchCurrentWeather();    
+        // this.fetchCurrentWeather();    
     }
     fetchCurrentWeather(){
         var myHeaders = new Headers();
