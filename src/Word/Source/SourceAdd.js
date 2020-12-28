@@ -16,20 +16,20 @@ export default class SourceAdd extends React.Component{
         e.preventDefault();
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-        // myHeaders.append('Access-Control-Allow-Origin', '*');
 
         var urlencoded = new URLSearchParams();
-        urlencoded.append("source", this.state.sourceName);
+        urlencoded.append("source_from", this.state.sourceName);
+        urlencoded.append("user_id", "1");
+
 
         var requestOptions = {
         method: 'POST',
         headers: myHeaders,
         body: urlencoded,
         redirect: 'follow',
-        // mode: 'no-cors'
         };
 
-        fetch("http://peteryuanmac/myhomeapp/php/vocab_source/addVocabSource.php", requestOptions)
+        fetch(this.props.serverData.localDjRest+"wordsources/", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error))
@@ -41,9 +41,9 @@ export default class SourceAdd extends React.Component{
     render(){
         return(
             <div className='sourceAddInputForm'>
-                <form class="form-inline" onSubmit={this.handleSubmit} >
+                <form className="form-inline" onSubmit={this.handleSubmit} >
                     <div className="form-group mx-sm-3 mb-2">
-                        <label for="sourceName" class="sr-only">Source</label>
+                        <label htmlFor="sourceName" className="sr-only">Source</label>
                         <input 
                         className='form-control'
                         type = "text"

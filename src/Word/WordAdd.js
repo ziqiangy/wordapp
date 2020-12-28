@@ -140,7 +140,15 @@ export default class WordAdd extends React.Component{
                 <div>Add Source
                 <img onClick={this.toggleSourceAddWindow} className = "icon-button ml-1" src={this.state.openSourceAdd? minusIcon : addIcon} alt="addIcon"/>
                 </div>
-                {this.state.openSourceAdd && <SourceAdd handleRefresh = {this.fetchVocabSource} handleCloseSelf = {this.toggleSourceAddWindow} />}
+                {
+                this.state.openSourceAdd 
+                && 
+                <SourceAdd 
+                    handleRefresh = {this.fetchVocabSource} 
+                    handleCloseSelf = {this.toggleSourceAddWindow} 
+                    serverData={this.props.serverData} 
+                    />
+                    }
                 
             </div>
             
