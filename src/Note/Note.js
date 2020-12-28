@@ -26,6 +26,16 @@ export default class Note extends React.Component{
             .then(response => response.json())
             .then(result => {
                 // console.log(result)
+
+
+                result.forEach(element=>{
+                    var str = element.insert_date;
+                    var res = str.split("T");
+                    element.display_insert_date = res[0];
+                    element.display_insert_time = res[1];
+                })
+
+                // console.log(result)
                 this.setState({tableData:result})
                 // this.setState({tableData: result}, ()=>{console.log(this.state.tableData)})
             })

@@ -66,7 +66,7 @@ export default class NoteList extends React.Component{
                                             {row.title}
                                             </button>
                                     </td>
-                                    <td>{row.insert_date}</td>
+                                    <td>{row.display_insert_date}</td>
                                     
                                 </tr>
                             )
