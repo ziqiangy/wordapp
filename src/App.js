@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Board from './Board';
-import AppHeader from './AppHeader';
+// import AppHeader from './AppHeader';
 
 export default class App extends React.Component{
   constructor(props){
@@ -24,7 +24,7 @@ export default class App extends React.Component{
   render(){
     return (
       <div className="App">
-        <AppHeader />
+        {/* <AppHeader /> */}
         <Board serverData={this.state.serverData} />
       </div>
     );
